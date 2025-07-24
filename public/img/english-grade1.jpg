@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="englishBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffa726;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#englishBg)"/>
+  
+  <!-- Open book -->
+  <path d="M80 120 L200 100 L320 120 L320 220 L200 200 L80 220 Z" fill="#fff" stroke="#333" stroke-width="2"/>
+  <line x1="200" y1="100" x2="200" y2="200" stroke="#333" stroke-width="2"/>
+  
+  <!-- Text on book pages -->
+  <text x="140" y="140" font-family="Arial, sans-serif" font-size="14" fill="#333">ABC</text>
+  <text x="130" y="160" font-family="Arial, sans-serif" font-size="12" fill="#666">Reading</text>
+  <text x="130" y="180" font-family="Arial, sans-serif" font-size="12" fill="#666">Writing</text>
+  
+  <text x="240" y="140" font-family="Arial, sans-serif" font-size="14" fill="#333">123</text>
+  <text x="230" y="160" font-family="Arial, sans-serif" font-size="12" fill="#666">Phonics</text>
+  <text x="230" y="180" font-family="Arial, sans-serif" font-size="12" fill="#666">Stories</text>
+  
+  <!-- Alphabet letters floating -->
+  <text x="50" y="80" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#fff">A</text>
+  <text x="350" y="60" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#fff">B</text>
+  <text x="30" y="250" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fff">C</text>
+  <text x="370" y="280" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#fff">D</text>
+  
+  <!-- Pencil -->
+  <rect x="300" y="40" width="8" height="80" fill="#ffd700"/>
+  <polygon points="300,40 304,30 308,40" fill="#ff6b6b"/>
+  <rect x="302" y="115" width="4" height="10" fill="#ff69b4"/>
+  
+  <!-- Title -->
+  <text x="200" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#fff">English Grade 1</text>
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#fff">Home Language Foundation</text>
+</svg>

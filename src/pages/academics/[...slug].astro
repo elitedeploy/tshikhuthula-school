@@ -1,0 +1,257 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+    const academics = await getCollection('academics');
+    return academics.map((academic) => ({
+        params: { slug: academic.id },
+        props: { academic },
+    }));
+}
+
+const { academic } = Astro.props;
+const { Content } = await academic.render();
+
+// Get related academics (same grade level or subject)
+const allAcademics = await getCollection('academics');
+const relatedAcademics = allAcademics
+    .filter(a => 
+        a.id !== academic.id && 
+        (a.data.grade_level === academic.data.grade_level || a.data.subject === academic.data.subject)
+    )
+    .slice(0, 3);
+---
+
+<Layout title={`${academic.data.subject} - ${academic.data.grade_level} | Tshikhuthula Primary School`}>
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">{academic.data.subject}</h1>
+                    <h3 class="text-white mb-4">{academic.data.grade_level}</h3>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="/academics">Academics</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">{academic.data.subject}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Subject Profile Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="team-item bg-light rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid w-100" src={academic.data.image || '/img/default-subject.jpg'} alt={academic.data.subject} style="height: 300px; object-fit: cover;">
+                        </div>
+                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                <a class="btn btn-sm-square btn-primary mx-1" href="/contact"><i class="fas fa-envelope"></i></a>
+                                <a class="btn btn-sm-square btn-primary mx-1" href="/admissions"><i class="fas fa-user-plus"></i></a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <h3 class="fw-bold mb-0">{academic.data.subject}</h3>
+                            <h5 class="text-primary">{academic.data.grade_level}</h5>
+                            <p class="mb-2"><strong>Weekly Hours:</strong> {academic.data.weekly_hours}</p>
+                            <p class="mb-2"><strong>Language:</strong> {academic.data.language_of_instruction}</p>
+                            <p class="mb-2"><strong>Framework:</strong> {academic.data.curriculum_framework}</p>
+                            {academic.data.is_core_subject && (
+                                <span class="badge bg-primary">Core Subject</span>
+                            )}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="row g-4">
+                        <!-- Learning Outcomes -->
+                        <div class="col-12">
+                            <div class="bg-light rounded p-4">
+                                <h4 class="text-primary mb-3">Learning Outcomes</h4>
+                                <div class="row">
+                                    {academic.data.learning_outcomes.map((outcome, index) => (
+                                        <div class="col-md-6 mb-2">
+                                            <p class="mb-1"><i class="fa fa-check text-primary me-2"></i>{outcome}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Assessment Methods -->
+                        <div class="col-md-6">
+                            <div class="bg-light rounded p-4 h-100">
+                                <h5 class="text-primary mb-3">Assessment Methods</h5>
+                                <ul class="list-unstyled">
+                                    {academic.data.assessment_methods.map((method) => (
+                                        <li class="mb-2"><i class="fa fa-arrow-right text-primary me-2"></i>{method}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Resources -->
+                        <div class="col-md-6">
+                            <div class="bg-light rounded p-4 h-100">
+                                <h5 class="text-primary mb-3">Learning Resources</h5>
+                                <ul class="list-unstyled">
+                                    {academic.data.resources.map((resource) => (
+                                        <li class="mb-2"><i class="fa fa-book text-primary me-2"></i>{resource}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        {academic.data.prerequisites && academic.data.prerequisites.length > 0 && (
+                            <div class="col-md-6">
+                                <div class="bg-light rounded p-4 h-100">
+                                    <h5 class="text-primary mb-3">Prerequisites</h5>
+                                    <ul class="list-unstyled">
+                                        {academic.data.prerequisites.map((prerequisite) => (
+                                            <li class="mb-2"><i class="fa fa-graduation-cap text-primary me-2"></i>{prerequisite}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        )}
+                        
+                        {academic.data.career_pathways && academic.data.career_pathways.length > 0 && (
+                            <div class="col-md-6">
+                                <div class="bg-light rounded p-4 h-100">
+                                    <h5 class="text-primary mb-3">Career Pathways</h5>
+                                    <ul class="list-unstyled">
+                                        {academic.data.career_pathways.map((pathway) => (
+                                            <li class="mb-2"><i class="fa fa-briefcase text-primary me-2"></i>{pathway}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Subject Profile End -->
+
+    <!-- Detailed Content Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="bg-light rounded p-5">
+                        <h3 class="text-primary mb-4">Subject Overview</h3>
+                        <div class="content">
+                            <Content />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Detailed Content End -->
+
+    <!-- Related Subjects Start -->
+    {relatedAcademics.length > 0 && (
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title bg-white text-center text-primary px-3">Related Subjects</h6>
+                    <h1 class="mb-5">You Might Also Be Interested In</h1>
+                </div>
+                <div class="row g-4">
+                    {relatedAcademics.map((related) => (
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="course-item bg-light">
+                                <div class="position-relative overflow-hidden">
+                                    <img class="img-fluid w-100" src={related.data.image || '/img/default-subject.jpg'} alt={related.data.subject} style="height: 200px; object-fit: cover;">
+                                    <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                        <a href={`/academics/${related.id}`} class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
+                                        <a href="/contact" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Enroll Now</a>
+                                    </div>
+                                </div>
+                                <div class="text-center p-4 pb-0">
+                                    <h3 class="mb-0">{related.data.subject}</h3>
+                                    <div class="mb-3">
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="fa fa-star text-primary"></small>
+                                        <small class="text-muted">({related.data.weekly_hours} hours/week)</small>
+                                    </div>
+                                    <h5 class="text-primary mb-2">{related.data.grade_level}</h5>
+                                </div>
+                                <div class="d-flex border-top">
+                                    <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>{related.data.curriculum_framework}</small>
+                                    <small class="flex-fill text-center py-2"><i class="fa fa-clock text-primary me-2"></i>{related.data.weekly_hours}h/week</small>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    )}
+    <!-- Related Subjects End -->
+
+    <!-- Call to Action Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="bg-primary rounded py-5 px-4">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <h6 class="text-white text-uppercase mb-3">Join Our School</h6>
+                        <h1 class="text-white mb-0">Ready to Excel in {academic.data.subject}?</h1>
+                    </div>
+                    <div class="col-lg-6 text-center text-lg-end">
+                        <a class="btn btn-outline-light py-3 px-5 me-3" href="/admissions">Apply Now</a>
+                        <a class="btn btn-light py-3 px-5" href="/contact">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Call to Action End -->
+</Layout>
+
+<style>
+    .content {
+        line-height: 1.8;
+    }
+    
+    .content h2 {
+        color: var(--bs-primary);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .content h3 {
+        color: var(--bs-primary);
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .content h4 {
+        color: var(--bs-secondary);
+        margin-top: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .content ul {
+        padding-left: 1.5rem;
+    }
+    
+    .content li {
+        margin-bottom: 0.5rem;
+    }
+</style>

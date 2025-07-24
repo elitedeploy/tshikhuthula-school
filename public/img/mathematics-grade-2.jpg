@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="math2Bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5c6bc0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3f51b5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#math2Bg)"/>
+  
+  <!-- Number line -->
+  <line x1="50" y1="80" x2="350" y2="80" stroke="#fff" stroke-width="3"/>
+  <line x1="50" y1="75" x2="50" y2="85" stroke="#fff" stroke-width="2"/>
+  <line x1="110" y1="75" x2="110" y2="85" stroke="#fff" stroke-width="2"/>
+  <line x1="170" y1="75" x2="170" y2="85" stroke="#fff" stroke-width="2"/>
+  <line x1="230" y1="75" x2="230" y2="85" stroke="#fff" stroke-width="2"/>
+  <line x1="290" y1="75" x2="290" y2="85" stroke="#fff" stroke-width="2"/>
+  <line x1="350" y1="75" x2="350" y2="85" stroke="#fff" stroke-width="2"/>
+  
+  <text x="50" y="100" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">0</text>
+  <text x="110" y="100" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">10</text>
+  <text x="170" y="100" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">20</text>
+  <text x="230" y="100" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">30</text>
+  <text x="290" y="100" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">40</text>
+  <text x="350" y="100" font-family="Arial, sans-serif" font-size="14" fill="#fff" text-anchor="middle">50</text>
+  
+  <!-- Addition problem -->
+  <rect x="80" y="130" width="60" height="40" fill="#fff" opacity="0.9" rx="5"/>
+  <text x="110" y="145" font-family="Arial, sans-serif" font-size="14" fill="#333" text-anchor="middle">15 + 8</text>
+  <text x="110" y="165" font-family="Arial, sans-serif" font-size="16" fill="#333" text-anchor="middle">= 23</text>
+  
+  <!-- Subtraction problem -->
+  <rect x="260" y="130" width="60" height="40" fill="#fff" opacity="0.9" rx="5"/>
+  <text x="290" y="145" font-family="Arial, sans-serif" font-size="14" fill="#333" text-anchor="middle">25 - 7</text>
+  <text x="290" y="165" font-family="Arial, sans-serif" font-size="16" fill="#333" text-anchor="middle">= 18</text>
+  
+  <!-- Base-10 blocks -->
+  <g transform="translate(50, 200)">
+    <!-- Tens -->
+    <rect x="0" y="0" width="30" height="10" fill="#ff9800" stroke="#333" stroke-width="1"/>
+    <rect x="0" y="15" width="30" height="10" fill="#ff9800" stroke="#333" stroke-width="1"/>
+    
+    <!-- Ones -->
+    <rect x="40" y="0" width="8" height="8" fill="#4caf50" stroke="#333" stroke-width="1"/>
+    <rect x="50" y="0" width="8" height="8" fill="#4caf50" stroke="#333" stroke-width="1"/>
+    <rect x="60" y="0" width="8" height="8" fill="#4caf50" stroke="#333" stroke-width="1"/>
+    
+    <text x="35" y="40" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">23</text>
+  </g>
+  
+  <!-- Geometric shapes -->
+  <circle cx="200" cy="220" r="15" fill="#e91e63" opacity="0.8"/>
+  <rect x="240" y="205" width="30" height="30" fill="#2196f3" opacity="0.8"/>
+  <polygon points="300,205 315,235 285,235" fill="#4caf50" opacity="0.8"/>
+  
+  <!-- Clock -->
+  <circle cx="320" cy="200" r="20" fill="#fff"/>
+  <circle cx="320" cy="200" r="18" fill="#333"/>
+  <line x1="320" y1="200" x2="320" y2="185" stroke="#fff" stroke-width="2"/>
+  <line x1="320" y1="200" x2="330" y2="200" stroke="#fff" stroke-width="2"/>
+  <circle cx="320" cy="200" r="2" fill="#fff"/>
+  <text x="320" y="250" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">Time</text>
+  
+  <!-- Money coins -->
+  <circle cx="150" cy="250" r="8" fill="#ffd700" stroke="#333" stroke-width="1"/>
+  <text x="150" y="255" font-family="Arial, sans-serif" font-size="8" fill="#333" text-anchor="middle">R1</text>
+  
+  <circle cx="170" cy="250" r="6" fill="#c0c0c0" stroke="#333" stroke-width="1"/>
+  <text x="170" y="254" font-family="Arial, sans-serif" font-size="6" fill="#333" text-anchor="middle">50c</text>
+  
+  <circle cx="185" cy="250" r="5" fill="#cd7f32" stroke="#333" stroke-width="1"/>
+  <text x="185" y="253" font-family="Arial, sans-serif" font-size="5" fill="#333" text-anchor="middle">10c</text>
+  
+  <!-- Pattern -->
+  <rect x="30" y="180" width="12" height="12" fill="#f44336"/>
+  <circle cx="50" cy="186" r="6" fill="#2196f3"/>
+  <rect x="62" y="180" width="12" height="12" fill="#f44336"/>
+  <circle cx="82" cy="186" r="6" fill="#2196f3"/>
+  <text x="56" y="205" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">Pattern</text>
+  
+  <!-- Measurement ruler -->
+  <rect x="300" y="40" width="80" height="8" fill="#ffeb3b"/>
+  <line x1="300" y1="40" x2="300" y2="48" stroke="#333" stroke-width="1"/>
+  <line x1="320" y1="40" x2="320" y2="48" stroke="#333" stroke-width="1"/>
+  <line x1="340" y1="40" x2="340" y2="48" stroke="#333" stroke-width="1"/>
+  <line x1="360" y1="40" x2="360" y2="48" stroke="#333" stroke-width="1"/>
+  <line x1="380" y1="40" x2="380" y2="48" stroke="#333" stroke-width="1"/>
+  <text x="340" y="60" font-family="Arial, sans-serif" font-size="10" fill="#fff" text-anchor="middle">Measure</text>
+  
+  <!-- Title -->
+  <text x="200" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#fff">Mathematics Grade 2</text>
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#fff">Numbers to 100, Shapes & Measurement</text>
+</svg>

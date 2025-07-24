@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "name": "Modern Computer Laboratory",
+    "description": "State-of-the-art computer lab with 30 workstations, high-speed internet, and interactive whiteboards for digital literacy education.",
+    "category": "Technology",
+    "capacity": "30 students",
+    "features": [
+      "30 modern computers",
+      "High-speed fiber internet",
+      "Interactive smart boards",
+      "Coding software and educational apps",
+      "Air conditioning"
+    ],
+    "image": "/img/course-1.jpg",
+    "is_featured": true,
+    "year_established": 2022,
+    "usage": "Computer literacy, coding classes, research projects"
+  },
+  {
+    "id": 2,
+    "name": "Science Laboratory",
+    "description": "Well-equipped science lab supporting hands-on experiments and STEM education for intermediate and senior phase learners.",
+    "category": "Science",
+    "capacity": "25 students",
+    "features": [
+      "Laboratory benches with gas and water",
+      "Microscopes and scientific instruments",
+      "Safety equipment and fume hood",
+      "Chemical storage facility",
+      "Interactive demonstration area"
+    ],
+    "image": "/img/course-2.jpg",
+    "is_featured": true,
+    "year_established": 2020,
+    "usage": "Natural sciences experiments, STEM projects, science fair preparation"
+  },
+  {
+    "id": 3,
+    "name": "Multi-Purpose Sports Hall",
+    "description": "Indoor sports facility accommodating various sports and physical education activities, with professional-grade equipment.",
+    "category": "Sports",
+    "capacity": "200 spectators",
+    "features": [
+      "Basketball court with professional hoops",
+      "Volleyball nets and equipment",
+      "Indoor soccer goals",
+      "Gymnastics equipment",
+      "Sound system for events"
+    ],
+    "image": "/img/course-3.jpg",
+    "is_featured": true,
+    "year_established": 2019,
+    "usage": "Physical education, inter-school competitions, community events"
+  },
+  {
+    "id": 4,
+    "name": "Library and Media Center",
+    "description": "Modern library with extensive collection of books, digital resources, and quiet study areas for independent learning.",
+    "category": "Academic",
+    "capacity": "80 students",
+    "features": [
+      "Over 5,000 books in multiple languages",
+      "Digital reading tablets",
+      "Quiet study pods",
+      "Research computers",
+      "Reading corner for younger learners"
+    ],
+    "image": "/img/about.jpg",
+    "is_featured": true,
+    "year_established": 2021,
+    "usage": "Reading programs, research projects, study sessions"
+  },
+  {
+    "id": 5,
+    "name": "Nutrition Center & Kitchen",
+    "description": "Modern kitchen facility providing nutritious meals to all learners as part of the National School Nutrition Programme.",
+    "category": "Nutrition",
+    "capacity": "500 meals daily",
+    "features": [
+      "Industrial-grade kitchen equipment",
+      "Food safety certified preparation areas",
+      "Storage facilities",
+      "Dining hall with 150 seats",
+      "Vegetable garden for fresh produce"
+    ],
+    "image": "/img/carousel-2.jpg",
+    "is_featured": false,
+    "year_established": 2018,
+    "usage": "Daily meal preparation, nutrition education, cooking classes"
+  },
+  {
+    "id": 6,
+    "name": "Art and Craft Studio",
+    "description": "Creative space equipped for various art forms including painting, sculpture, traditional crafts, and cultural arts.",
+    "category": "Arts",
+    "capacity": "20 students",
+    "features": [
+      "Art supplies and materials",
+      "Pottery wheels and kiln",
+      "Traditional craft materials",
+      "Display areas for student work",
+      "Natural lighting"
+    ],
+    "image": "/img/cat-1.jpg",
+    "is_featured": false,
+    "year_established": 2020,
+    "usage": "Art classes, cultural projects, creative expression"
+  },
+  {
+    "id": 7,
+    "name": "Outdoor Learning Garden",
+    "description": "Educational garden space where students learn about agriculture, environmental science, and sustainable practices.",
+    "category": "Environmental",
+    "capacity": "Full class",
+    "features": [
+      "Vegetable garden plots",
+      "Composting area",
+      "Weather monitoring station",
+      "Outdoor classroom seating",
+      "Indigenous plant section"
+    ],
+    "image": "/img/carousel-1.jpg",
+    "is_featured": true,
+    "year_established": 2019,
+    "usage": "Environmental education, agriculture lessons, sustainability projects"
+  },
+  {
+    "id": 8,
+    "name": "Music Room",
+    "description": "Dedicated space for music education with instruments and equipment for choir practice and music lessons.",
+    "category": "Arts",
+    "capacity": "35 students",
+    "features": [
+      "Piano and keyboard",
+      "Traditional African instruments",
+      "Sound system and microphones",
+      "Music stands and sheet music",
+      "Recording equipment"
+    ],
+    "image": "/img/cat-2.jpg",
+    "is_featured": false,
+    "year_established": 2021,
+    "usage": "Music lessons, choir practice, cultural performances"
+  }
+]

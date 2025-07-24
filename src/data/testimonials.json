@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Mrs. Nomsa Mthembu",
+    "role": "Parent - Grade 5 Learner",
+    "content": "Tshikhuthula Primary School has been exceptional in nurturing my daughter's academic and personal growth. The teachers are dedicated and the learning environment is truly supportive.",
+    "image": "/img/testimonial-1.jpg",
+    "rating": 5,
+    "date": "2024-06-15",
+    "is_featured": true
+  },
+  {
+    "id": 2,
+    "name": "Mr. David Johnson",
+    "role": "Parent - Grade 7 Learner",
+    "content": "The school's commitment to excellence is evident in every aspect. My son has developed confidence and leadership skills that will serve him well in high school and beyond.",
+    "image": "/img/testimonial-2.jpg",
+    "rating": 5,
+    "date": "2024-05-20",
+    "is_featured": true
+  },
+  {
+    "id": 3,
+    "name": "Mrs. Lerato Dlamini",
+    "role": "Parent - Grade 3 Learner",
+    "content": "The foundation phase program is outstanding. My child loves coming to school every day and has developed a genuine love for learning.",
+    "image": "/img/testimonial-3.jpg",
+    "rating": 5,
+    "date": "2024-04-10",
+    "is_featured": false
+  },
+  {
+    "id": 4,
+    "name": "Mr. Peter Botha",
+    "role": "Parent - Grade 6 Learner",
+    "content": "The school's environmental education program has made my son more conscious about sustainability. It's wonderful to see practical learning in action.",
+    "image": "/img/testimonial-4.jpg",
+    "rating": 5,
+    "date": "2024-03-25",
+    "is_featured": false
+  },
+  {
+    "id": 5,
+    "name": "Mrs. Sarah Chen",
+    "role": "Parent - Grade 4 Learner",
+    "content": "The computer literacy program has given my daughter valuable digital skills. The new computer lab is impressive and the curriculum is age-appropriate.",
+    "image": "/img/testimonial-1.jpg",
+    "rating": 5,
+    "date": "2024-07-08",
+    "is_featured": true
+  },
+  {
+    "id": 6,
+    "name": "Mr. Thabo Molefe",
+    "role": "Community Member",
+    "content": "As a community leader, I've seen the positive impact this school has on our children and families. The staff truly cares about each learner's success.",
+    "image": "/img/testimonial-2.jpg",
+    "rating": 5,
+    "date": "2024-02-18",
+    "is_featured": false
+  }
+]

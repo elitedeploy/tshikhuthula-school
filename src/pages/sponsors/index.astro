@@ -1,0 +1,379 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import FilterComponent from '../../components/FilterComponent.astro';
+
+// Get all sponsors
+const allSponsors = await getCollection('sponsors');
+
+// Sort sponsors by featured status and then by name
+const sortedSponsors = allSponsors.sort((a, b) => {
+  if (a.data.is_featured && !b.data.is_featured) return -1;
+  if (!a.data.is_featured && b.data.is_featured) return 1;
+  return a.data.name.localeCompare(b.data.name);
+});
+
+// Get unique categories for filtering
+const categories = [...new Set(allSponsors.map(sponsor => sponsor.data.category))];
+const featuredSponsors = allSponsors.filter(sponsor => sponsor.data.is_featured);
+---
+
+<Layout title="Sponsorship Opportunities - Tshikhuthula Primary School" description="Partner with Tshikhuthula Primary School and invest in our children's future through various sponsorship opportunities." keywords="sponsorship, partnership, education, Tshikhuthula Primary School">
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">Partner With Excellence</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Sponsorship</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Sponsorship Hero Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" src="/img/about.jpg" alt="Students learning" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Sponsorship Impact</h6>
+                    <h1 class="mb-4">Invest in Our Children's Future</h1>
+                    <p class="mb-4">Your sponsorship directly impacts the lives of our students, providing them with opportunities to excel academically, develop their talents, and build a brighter future for themselves and their communities.</p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Quality Education Access</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Modern Learning Facilities</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Sports & Cultural Programs</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Scholarship Opportunities</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Community Development</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Brand Visibility & Recognition</p>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="#sponsorship-packages">Explore Packages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sponsorship Hero End -->
+
+    <!-- Sponsorship Packages Start -->
+    <div class="container-xxl py-5" id="sponsorship-packages">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Sponsorship Packages</h6>
+                <h1 class="mb-5">Choose Your Partnership Level</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="course-item bg-light">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="/img/course-1.jpg" alt="Bronze Package">
+                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                <a href="#contact-form" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Learn More</a>
+                                <a href="#contact-form" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Apply Now</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4 pb-0">
+                            <h3 class="mb-0">R15,000 - R30,000</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star-half-alt text-primary"></small>
+                                <small class="fa fa-star-o text-primary"></small>
+                            </div>
+                            <h5 class="mb-4">Bronze Partnership</h5>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fa fa-check text-primary me-2"></i>Event sponsorship opportunities</li>
+                                <li><i class="fa fa-check text-primary me-2"></i>Logo on school materials</li>
+                                <li><i class="fa fa-check text-primary me-2"></i>Website recognition</li>
+                                <li><i class="fa fa-check text-primary me-2"></i>Annual appreciation certificate</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex border-top">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>1 Year</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>Local Business</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="course-item bg-light">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="/img/course-2.jpg" alt="Silver Package">
+                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                <a href="#contact-form" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Learn More</a>
+                                <a href="#contact-form" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Apply Now</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4 pb-0">
+                            <h3 class="mb-0">R30,000 - R75,000</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star-half-alt text-primary"></small>
+                            </div>
+                            <h5 class="mb-4">Silver Partnership</h5>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fa fa-check text-primary me-2"></i>All Bronze benefits</li>
+                                <li><i class="fa fa-check text-primary me-2"></i>Equipment sponsorship</li>
+                                <li><i class="fa fa-check text-primary me-2"></i>Prominent logo placement</li>
+                                <li><i class="fa fa-check text-primary me-2"></i>Newsletter features</li>
+                                <li><i class="fa fa-check text-primary me-2"></i>School event invitations</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex border-top">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>2 Years</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-building text-primary me-2"></i>Corporate</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="course-item bg-light">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" src="/img/course-3.jpg" alt="Gold Package">
+                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                <a href="#contact-form" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Learn More</a>
+                                <a href="#contact-form" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Apply Now</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4 pb-0">
+                            <h3 class="mb-0">R75,000+</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                            </div>
+                            <h5 class="mb-4">Gold Partnership</h5>
+                            <ul class="list-unstyled mb-4">
+                                <li><i class="fa fa-check text-primary me-2"></i>All Silver benefits</li>
+                                <li><i class="fa fa-check text-primary me-2"></i>Facility naming rights</li>
+                                <li><i class="fa fa-check text-primary me-2"></i>Scholarship fund creation</li>
+                                <li><i class="fa fa-check text-primary me-2"></i>Board meeting invitations</li>
+                                <li><i class="fa fa-check text-primary me-2"></i>Custom partnership programs</li>
+                            </ul>
+                        </div>
+                        <div class="d-flex border-top">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt text-primary me-2"></i>3+ Years</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-crown text-primary me-2"></i>Premium</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Sponsorship Packages End -->
+
+    <!-- Current Sponsors Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Our Partners</h6>
+                <h1 class="mb-5">Meet Our Valued Sponsors</h1>
+            </div>
+            
+            <!-- Category Filter Buttons -->
+            <FilterComponent 
+                items={allSponsors}
+                filterKey="category"
+                filterOptions={categories}
+                allLabel="All Sponsors"
+                buttonClass="btn btn-outline-primary me-2 mb-2"
+                containerClass="text-center mb-5"
+                itemSelector=".sponsor-item"
+                itemDataAttribute="data-category"
+                filterType="class"
+            />
+            
+            <!-- Sponsors Grid -->
+            <div class="row g-4" id="sponsors-container">
+                {allSponsors.map((sponsor) => (
+                    <div class={`col-lg-4 col-md-6 wow fadeInUp sponsor-item ${sponsor.data.category.toLowerCase().replace(/\s+/g, '-')}`} data-wow-delay="0.1s" data-category={sponsor.data.category.toLowerCase().replace(/\s+/g, '-')}>
+                        <div class="team-item bg-light">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src={sponsor.data.logo} alt={sponsor.data.name} style="height: 200px; width: 100%; object-fit: contain; background: white;">
+                            </div>
+                            <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                    {sponsor.data.website && (
+                                        <a class="btn btn-sm-square btn-primary mx-1" href={sponsor.data.website} target="_blank"><i class="fas fa-globe"></i></a>
+                                    )}
+                                    {sponsor.data.social_media?.facebook && (
+                                        <a class="btn btn-sm-square btn-primary mx-1" href={sponsor.data.social_media.facebook} target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                    )}
+                                    {sponsor.data.social_media?.twitter && (
+                                        <a class="btn btn-sm-square btn-primary mx-1" href={sponsor.data.social_media.twitter} target="_blank"><i class="fab fa-twitter"></i></a>
+                                    )}
+                                    {sponsor.data.social_media?.linkedin && (
+                                        <a class="btn btn-sm-square btn-primary mx-1" href={sponsor.data.social_media.linkedin} target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                    )}
+                                </div>
+                            </div>
+                            <div class="text-center p-4">
+                                <h5 class="mb-0">{sponsor.data.name}</h5>
+                                <small class="text-primary">{sponsor.data.category}</small>
+                                {sponsor.data.is_featured && (
+                                    <div class="mt-2">
+                                        <span class="badge bg-warning text-dark">Featured Partner</span>
+                                    </div>
+                                )}
+                                <p class="mt-3 text-muted" style="font-size: 0.9rem; line-height: 1.4;">
+                                    {sponsor.data.description.length > 100 
+                                        ? sponsor.data.description.substring(0, 100) + '...' 
+                                        : sponsor.data.description
+                                    }
+                                </p>
+                                <div class="mt-3">
+                                    <small class="text-muted">Partnership since {sponsor.data.partnership_since}</small>
+                                </div>
+                                <div class="mt-3">
+                                    <a href={`/sponsors/${sponsor.slug}`} class="btn btn-primary btn-sm">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+    <!-- Current Sponsors End -->
+
+    <!-- Contact Form Start -->
+    <div class="container-xxl py-5" id="contact-form">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Get Involved</h6>
+                <h1 class="mb-5">Become a Sponsor Today</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h5>Why Partner With Us?</h5>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                            <i class="fa fa-heart text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary mb-1">Community Impact</h5>
+                            <span>Directly improve education in your community</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                            <i class="fa fa-eye text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary mb-1">Brand Visibility</h5>
+                            <span>Reach families and community members</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                            <i class="fa fa-handshake text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary mb-1">CSR Alignment</h5>
+                            <span>Support your corporate social responsibility goals</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                            <i class="fa fa-award text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary mb-1">Tax Benefits</h5>
+                            <span>Eligible for tax deductions and incentives</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                                    <label for="name">Your Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="company" placeholder="Company Name">
+                                    <label for="company">Company Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="package">
+                                        <option value="">Select Package</option>
+                                        <option value="bronze">Bronze Partnership</option>
+                                        <option value="silver">Silver Partnership</option>
+                                        <option value="gold">Gold Partnership</option>
+                                        <option value="custom">Custom Partnership</option>
+                                    </select>
+                                    <label for="package">Sponsorship Package</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Send Sponsorship Inquiry</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Form End -->
+
+    <style>
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+
+</Layout>

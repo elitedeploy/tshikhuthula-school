@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Annual Sports Day",
+    "description": "Join us for our exciting annual sports day featuring various athletic competitions and fun activities for all grades.",
+    "date": "2024-09-15",
+    "time": "08:00",
+    "location": "School Sports Field",
+    "category": "Sports",
+    "image": "/img/carousel-1.jpg",
+    "is_featured": true,
+    "registration_required": false
+  },
+  {
+    "id": 2,
+    "title": "Science Fair 2024",
+    "description": "Students showcase their innovative science projects and experiments in this annual competition.",
+    "date": "2024-10-20",
+    "time": "09:00",
+    "location": "School Hall",
+    "category": "Academic",
+    "image": "/img/carousel-2.jpg",
+    "is_featured": true,
+    "registration_required": true
+  },
+  {
+    "id": 3,
+    "title": "Parent-Teacher Conference",
+    "description": "Meet with your child's teachers to discuss academic progress and development.",
+    "date": "2024-08-30",
+    "time": "14:00",
+    "location": "Individual Classrooms",
+    "category": "Academic",
+    "image": "/img/about.jpg",
+    "is_featured": false,
+    "registration_required": true
+  },
+  {
+    "id": 4,
+    "title": "Cultural Heritage Day",
+    "description": "Celebrate South African heritage with traditional music, dance, and cultural displays.",
+    "date": "2024-09-24",
+    "time": "10:00",
+    "location": "School Grounds",
+    "category": "Cultural",
+    "image": "/img/carousel-1.jpg",
+    "is_featured": true,
+    "registration_required": false
+  },
+  {
+    "id": 5,
+    "title": "Grade 7 Graduation",
+    "description": "Celebrating our Grade 7 learners as they complete their primary school journey.",
+    "date": "2024-12-05",
+    "time": "18:00",
+    "location": "School Hall",
+    "category": "Graduation",
+    "image": "/img/carousel-2.jpg",
+    "is_featured": true,
+    "registration_required": true
+  },
+  {
+    "id": 6,
+    "title": "Reading Week",
+    "description": "A week dedicated to promoting literacy and love for reading among all learners.",
+    "date": "2024-11-11",
+    "time": "08:00",
+    "location": "Library & Classrooms",
+    "category": "Academic",
+    "image": "/img/about.jpg",
+    "is_featured": false,
+    "registration_required": false
+  }
+]

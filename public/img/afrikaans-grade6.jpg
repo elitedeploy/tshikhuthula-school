@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="afrikaansBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff7043;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff5722;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#afrikaansBg)"/>
+  
+  <!-- South African flag colors as accent -->
+  <rect x="20" y="20" width="30" height="20" fill="#007749"/>
+  <rect x="20" y="40" width="30" height="20" fill="#ffb612"/>
+  <rect x="20" y="60" width="30" height="20" fill="#de3831"/>
+  
+  <!-- Book with Afrikaans text -->
+  <rect x="150" y="100" width="100" height="80" fill="#fff" stroke="#333" stroke-width="2" rx="5"/>
+  <line x1="200" y1="100" x2="200" y2="180" stroke="#333" stroke-width="2"/>
+  
+  <!-- Afrikaans text on book -->
+  <text x="175" y="125" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">Afrikaans</text>
+  <text x="175" y="145" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">Lees</text>
+  <text x="175" y="160" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">Skryf</text>
+  
+  <text x="225" y="125" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">Taal</text>
+  <text x="225" y="145" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">Praat</text>
+  <text x="225" y="160" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">Luister</text>
+  
+  <!-- Afrikaans words floating -->
+  <text x="80" y="70" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#fff">Hallo</text>
+  <text x="320" y="60" font-family="Arial, sans-serif" font-size="14" fill="#fff">Dankie</text>
+  <text x="60" y="220" font-family="Arial, sans-serif" font-size="15" fill="#fff">Skool</text>
+  <text x="330" y="240" font-family="Arial, sans-serif" font-size="14" fill="#fff">Vriend</text>
+  <text x="100" y="260" font-family="Arial, sans-serif" font-size="13" fill="#fff">Leer</text>
+  
+  <!-- Speech bubbles -->
+  <ellipse cx="300" cy="120" rx="40" ry="25" fill="#fff" opacity="0.9"/>
+  <polygon points="280,135 270,145 285,140" fill="#fff" opacity="0.9"/>
+  <text x="300" y="125" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle">Goeie môre!</text>
+  
+  <ellipse cx="120" cy="160" rx="35" ry="20" fill="#fff" opacity="0.9"/>
+  <polygon points="140,175 150,185 145,180" fill="#fff" opacity="0.9"/>
+  <text x="120" y="165" font-family="Arial, sans-serif" font-size="11" fill="#333" text-anchor="middle">Baie goed!</text>
+  
+  <!-- Traditional African patterns -->
+  <circle cx="350" cy="180" r="8" fill="#ffeb3b" opacity="0.7"/>
+  <circle cx="365" cy="195" r="6" fill="#ff9800" opacity="0.7"/>
+  <circle cx="340" cy="200" r="7" fill="#4caf50" opacity="0.7"/>
+  
+  <!-- Pen/pencil -->
+  <rect x="280" y="200" width="6" height="60" fill="#2196f3"/>
+  <polygon points="280,200 283,190 286,200" fill="#333"/>
+  <rect x="281" y="255" width="4" height="8" fill="#ff69b4"/>
+  
+  <!-- Protea flower (South African national flower) -->
+  <circle cx="80" cy="180" r="12" fill="#e91e63"/>
+  <path d="M68 180 Q75 170 82 180 Q75 190 68 180" fill="#ad1457"/>
+  <path d="M92 180 Q85 170 78 180 Q85 190 92 180" fill="#ad1457"/>
+  <path d="M80 168 Q90 175 80 182 Q70 175 80 168" fill="#ad1457"/>
+  <path d="M80 192 Q90 185 80 178 Q70 185 80 192" fill="#ad1457"/>
+  
+  <!-- Title -->
+  <text x="200" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#fff">Afrikaans Grade 6</text>
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#fff">Eerste Addisionele Taal</text>
+</svg>

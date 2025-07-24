@@ -1,0 +1,294 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// Define Sponsor interface for recognition page
+interface Sponsor {
+  id: number;
+  name: string;
+  logo_url: string;
+  website_url: string;
+  sponsorship_type: string;
+  sponsorship_amount: number;
+  recognition_level: string;
+  start_date: string;
+  end_date: string;
+  description: string;
+  benefits_provided: string;
+}
+
+// Fetch sponsors data for recognition page
+let sponsors: Sponsor[] = [];
+let error: string | null = null;
+
+try {
+  // In a real implementation, this would fetch from the API
+  // For now, we'll use static data that matches our database structure
+  sponsors = [
+    {
+      id: 1,
+      name: 'Soweto Community Bank',
+      logo_url: '/img/placeholder-logo.svg',
+      website_url: 'https://www.sowetocommunitybank.co.za',
+      sponsorship_type: 'general',
+      sponsorship_amount: 50000,
+      recognition_level: 'gold',
+      start_date: '2024-01-01',
+      end_date: '2024-12-31',
+      description: 'Annual sponsorship supporting various school activities and infrastructure development.',
+      benefits_provided: 'Logo placement, event naming rights, newsletter features'
+    },
+    {
+      id: 2,
+      name: 'Johannesburg Education Foundation',
+      logo_url: '/img/placeholder-logo.svg',
+      website_url: 'https://www.jeducation.org.za',
+      sponsorship_type: 'academic',
+      sponsorship_amount: 75000,
+      recognition_level: 'platinum',
+      start_date: '2024-01-01',
+      end_date: '2025-12-31',
+      description: 'Supporting academic excellence through scholarship programs and learning resources.',
+      benefits_provided: 'Facility naming rights, scholarship fund, board meeting invitations'
+    },
+    {
+      id: 3,
+      name: 'Local Sports Club',
+      logo_url: '/img/placeholder-logo.svg',
+      website_url: 'https://www.localsportsclub.co.za',
+      sponsorship_type: 'sports',
+      sponsorship_amount: 25000,
+      recognition_level: 'silver',
+      start_date: '2024-03-01',
+      end_date: '2024-11-30',
+      description: 'Sponsoring school sports programs and equipment.',
+      benefits_provided: 'Sports equipment branding, event sponsorship, website recognition'
+    }
+  ];
+} catch (e) {
+  error = 'Failed to load sponsors data';
+  console.error('Error loading sponsors:', e);
+}
+
+// Group sponsors by recognition level
+const sponsorsByLevel: { [key: string]: Sponsor[] } = {
+  platinum: sponsors.filter(s => s.recognition_level === 'platinum'),
+  gold: sponsors.filter(s => s.recognition_level === 'gold'),
+  silver: sponsors.filter(s => s.recognition_level === 'silver'),
+  bronze: sponsors.filter(s => s.recognition_level === 'bronze')
+};
+---
+
+<Layout title="Sponsor Recognition - Tshikhuthula Primary School" description="Recognizing our valued sponsors and partners who support Tshikhuthula Primary School's mission to provide quality education." keywords="sponsor recognition, partners, Tshikhuthula Primary School, education support">
+    <!-- Custom Sponsor Styles -->
+    <style>
+        .sponsor-logo-card {
+            cursor: pointer;
+            border: 2px solid transparent !important;
+        }
+        
+        .sponsor-logo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+            border-color: #06BBCC !important;
+        }
+        
+        .sponsor-logo-card img {
+            transition: all 0.3s ease;
+            filter: grayscale(20%);
+        }
+        
+        .sponsor-logo-card:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+        
+        .sponsor-logo-card .badge {
+            transition: all 0.3s ease;
+        }
+        
+        .sponsor-logo-card:hover .badge {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 768px) {
+            .sponsor-logo-card {
+                min-height: 120px !important;
+            }
+        }
+    </style>
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">Sponsor Recognition</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="/sponsors">Sponsors</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Recognition</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Recognition Hero Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Our Gratitude</h6>
+                <h1 class="mb-5">Honoring Our Valued Partners</h1>
+                <p class="mb-5">We are deeply grateful to our sponsors who make our educational mission possible. Their generous support enables us to provide quality education, modern facilities, and enriching programs for our students. Click on any logo to visit our partner's website.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Recognition Hero End -->
+
+    <!-- All Sponsors Grid Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Our Sponsors</h6>
+                <h1 class="mb-5">Supporting Our Educational Mission</h1>
+            </div>
+            
+            <!-- Platinum Sponsors -->
+            {sponsorsByLevel.platinum.length > 0 && (
+            <div class="mb-5">
+                <div class="text-center mb-4">
+                    <h3 class="text-primary mb-3">Platinum Partners</h3>
+                    <p class="text-muted">Our premier supporters providing exceptional support</p>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    {sponsorsByLevel.platinum.map((sponsor, index) => (
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay={`${0.1 + index * 0.1}s`}>
+                        <a href={sponsor.website_url} target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="sponsor-logo-card bg-white border rounded p-4 h-100 d-flex flex-column align-items-center justify-content-center position-relative overflow-hidden" style="min-height: 200px; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                <div class="position-absolute top-0 end-0 m-2">
+                                    <span class="badge bg-primary">Platinum</span>
+                                </div>
+                                <div class="sponsor-logo mb-3" style="height: 80px; display: flex; align-items: center; justify-content: center;">
+                                    <img src={sponsor.logo_url || '/img/placeholder-logo.svg'} alt={sponsor.name} class="img-fluid" style="max-height: 80px; max-width: 100%; object-fit: contain;">
+                                </div>
+                                <h5 class="text-center text-dark mb-2">{sponsor.name}</h5>
+                                <p class="text-muted text-center small mb-0">{sponsor.sponsorship_type.charAt(0).toUpperCase() + sponsor.sponsorship_type.slice(1)} Sponsor</p>
+                            </div>
+                        </a>
+                    </div>
+                    ))}
+                </div>
+            </div>
+            )}
+            
+            <!-- Gold Sponsors -->
+            {sponsorsByLevel.gold.length > 0 && (
+            <div class="mb-5">
+                <div class="text-center mb-4">
+                    <h3 class="text-warning mb-3">Gold Partners</h3>
+                    <p class="text-muted">Valued supporters contributing significantly to our growth</p>
+                </div>
+                <div class="row g-4 justify-content-center">
+                    {sponsorsByLevel.gold.map((sponsor, index) => (
+                    <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay={`${0.1 + index * 0.1}s`}>
+                        <a href={sponsor.website_url} target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="sponsor-logo-card bg-white border rounded p-4 h-100 d-flex flex-column align-items-center justify-content-center position-relative overflow-hidden" style="min-height: 180px; transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                <div class="position-absolute top-0 end-0 m-2">
+                                    <span class="badge bg-warning">Gold</span>
+                                </div>
+                                <div class="sponsor-logo mb-3" style="height: 60px; display: flex; align-items: center; justify-content: center;">
+                                    <img src={sponsor.logo_url || '/img/placeholder-logo.svg'} alt={sponsor.name} class="img-fluid" style="max-height: 60px; max-width: 100%; object-fit: contain;">
+                                </div>
+                                <h6 class="text-center text-dark mb-2">{sponsor.name}</h6>
+                                <p class="text-muted text-center small mb-0">{sponsor.sponsorship_type.charAt(0).toUpperCase() + sponsor.sponsorship_type.slice(1)} Sponsor</p>
+                            </div>
+                        </a>
+                    </div>
+                    ))}
+                </div>
+            </div>
+            )}
+            
+            <!-- Silver Sponsors -->
+            {sponsorsByLevel.silver.length > 0 && (
+            <div class="mb-5">
+                <div class="text-center mb-4">
+                    <h3 class="text-secondary mb-3">Silver Partners</h3>
+                    <p class="text-muted">Committed partners helping maintain educational excellence</p>
+                </div>
+                <div class="row g-3 justify-content-center">
+                    {sponsorsByLevel.silver.map((sponsor, index) => (
+                    <div class="col-lg-3 col-md-4 col-sm-6 wow fadeInUp" data-wow-delay={`${0.1 + index * 0.1}s`}>
+                        <a href={sponsor.website_url} target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="sponsor-logo-card bg-white border rounded p-3 h-100 d-flex flex-column align-items-center justify-content-center position-relative overflow-hidden" style="min-height: 160px; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+                                <div class="position-absolute top-0 end-0 m-2">
+                                    <span class="badge bg-secondary">Silver</span>
+                                </div>
+                                <div class="sponsor-logo mb-2" style="height: 50px; display: flex; align-items: center; justify-content: center;">
+                                    <img src={sponsor.logo_url || '/img/placeholder-logo.svg'} alt={sponsor.name} class="img-fluid" style="max-height: 50px; max-width: 100%; object-fit: contain;">
+                                </div>
+                                <h6 class="text-center text-dark mb-1">{sponsor.name}</h6>
+                                <p class="text-muted text-center small mb-0">{sponsor.sponsorship_type.charAt(0).toUpperCase() + sponsor.sponsorship_type.slice(1)} Sponsor</p>
+                            </div>
+                        </a>
+                    </div>
+                    ))}
+                </div>
+            </div>
+            )}
+            
+            <!-- Bronze Sponsors -->
+            {sponsorsByLevel.bronze.length > 0 && (
+            <div class="mb-5">
+                <div class="text-center mb-4">
+                    <h3 class="text-dark mb-3">Bronze Partners</h3>
+                    <p class="text-muted">Community supporters strengthening our educational foundation</p>
+                </div>
+                <div class="row g-3 justify-content-center">
+                    {sponsorsByLevel.bronze.map((sponsor, index) => (
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6 wow fadeInUp" data-wow-delay={`${0.1 + index * 0.1}s`}>
+                        <a href={sponsor.website_url} target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+                            <div class="sponsor-logo-card bg-white border rounded p-3 h-100 d-flex flex-column align-items-center justify-content-center position-relative overflow-hidden" style="min-height: 140px; transition: all 0.3s ease; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                                <div class="position-absolute top-0 end-0 m-1">
+                                    <span class="badge bg-dark" style="font-size: 0.7rem;">Bronze</span>
+                                </div>
+                                <div class="sponsor-logo mb-2" style="height: 40px; display: flex; align-items: center; justify-content: center;">
+                                    <img src={sponsor.logo_url || '/img/placeholder-logo.svg'} alt={sponsor.name} class="img-fluid" style="max-height: 40px; max-width: 100%; object-fit: contain;">
+                                </div>
+                                <h6 class="text-center text-dark mb-0 small">{sponsor.name}</h6>
+                            </div>
+                        </a>
+                    </div>
+                    ))}
+                </div>
+            </div>
+            )}
+        </div>
+    </div>
+    <!-- All Sponsors Grid End -->
+    <!-- Bronze Sponsors End -->
+
+    <!-- Call to Action Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="bg-primary rounded p-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h1 class="text-white mb-3">Partnership Opportunity</h1>
+                        <p class="text-white mb-0">Become a sponsor and help us continue providing quality education to our students. Your support makes a real difference in our community.</p>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <a href="/contact" class="btn btn-light py-3 px-5 mb-2">Become a Sponsor</a>
+                        <br>
+                        <a href="/sponsors" class="btn btn-outline-light py-3 px-5">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Call to Action End -->
+
+</Layout>

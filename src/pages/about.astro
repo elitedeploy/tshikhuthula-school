@@ -1,0 +1,337 @@
+---
+import Layout from '../layouts/Layout.astro';
+import facilitiesData from '../data/facilities.json';
+import sportsData from '../data/sports.json';
+import communityData from '../data/community.json';
+import achievementsData from '../data/achievements.json';
+import FacilityCard from '../components/FacilityCard.astro';
+import SportsCard from '../components/SportsCard.astro';
+import CommunityCard from '../components/CommunityCard.astro';
+
+// Filter featured items
+const featuredFacilities = facilitiesData.filter(facility => facility.is_featured);
+const featuredSports = sportsData.filter(sport => sport.is_featured);
+const featuredCommunity = communityData.filter(initiative => initiative.is_featured);
+const featuredAchievements = achievementsData.filter(achievement => achievement.is_featured).slice(0, 6);
+---
+
+<Layout title="About Us - Tshikhuthula Primary School" description="Learn about Tshikhuthula Primary School's mission, values, and commitment to providing quality education in Limpopo Province.">
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">About Us</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">About</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- School Overview Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Excellence in Education & Beyond</h6>
+                <h1 class="mb-5">Comprehensive School Experience</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-building text-primary mb-4"></i>
+                            <h5 class="mb-3">World-Class Facilities</h5>
+                            <p>State-of-the-art learning spaces, laboratories, sports facilities, and technology centers designed for 21st-century education.</p>
+                            <a href="#facilities" class="btn btn-outline-primary mt-3">Explore Facilities</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-trophy text-primary mb-4"></i>
+                            <h5 class="mb-3">Sports Excellence</h5>
+                            <p>Comprehensive sports programs fostering teamwork, discipline, and physical fitness across multiple disciplines.</p>
+                            <a href="#sports" class="btn btn-outline-primary mt-3">View Sports</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-heart text-primary mb-4"></i>
+                            <h5 class="mb-3">Community Impact</h5>
+                            <p>Active community engagement through service learning, partnerships, and social responsibility initiatives.</p>
+                            <a href="#community" class="btn btn-outline-primary mt-3">Our Impact</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-award text-primary mb-4"></i>
+                            <h5 class="mb-3">Proven Results</h5>
+                            <p>Outstanding academic achievements, awards, and recognition that demonstrate our commitment to excellence.</p>
+                            <a href="#achievements" class="btn btn-outline-primary mt-3">See Results</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- School Overview End -->
+
+    <!-- School Introduction Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">About Elite Academy</h6>
+                    <h1 class="mb-4">Where Excellence Meets Opportunity</h1>
+                    <p class="mb-4">Elite Academy stands as a beacon of educational excellence, offering a comprehensive learning experience that extends far beyond traditional academics. Our campus is a vibrant community where students discover their passions, develop their talents, and prepare for a successful future.</p>
+                    <p class="mb-4">From state-of-the-art facilities to championship sports programs and meaningful community partnerships, we provide every student with the tools and opportunities they need to excel in all aspects of life.</p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Modern Learning Facilities</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Championship Sports Teams</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Community Partnerships</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Award-Winning Programs</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Technology Integration</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Global Recognition</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-3">
+                        <a class="btn btn-primary py-3 px-4" href="/contact">Schedule a Visit</a>
+                        <a class="btn btn-outline-primary py-3 px-4" href="/academics">Our Programs</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <img class="img-fluid rounded" src="/img/about.jpg" alt="Elite Academy Campus">
+                    <div class="row g-3 mt-3">
+                        <div class="col-6">
+                            <div class="bg-primary text-white text-center p-3 rounded">
+                                <h4 class="mb-1">25+</h4>
+                                <small>Years of Excellence</small>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="bg-success text-white text-center p-3 rounded">
+                                <h4 class="mb-1">1200+</h4>
+                                <small>Happy Students</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- School Introduction End -->
+
+    <!-- Facilities Showcase Start -->
+    <div id="facilities" class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Our Facilities</h6>
+                <h1 class="mb-5">World-Class Learning Environment</h1>
+            </div>
+            <div class="row g-4">
+                {featuredFacilities.map((facility, index) => (
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay={`${0.1 + index * 0.2}s`}>
+                        <FacilityCard facility={facility} showDetails={true} />
+                    </div>
+                ))}
+            </div>
+            <div class="text-center mt-5">
+                <a href="/facilities" class="btn btn-primary py-3 px-5">Explore All Facilities</a>
+            </div>
+        </div>
+    </div>
+    <!-- Facilities Showcase End -->
+
+    <!-- Sports Programs Start -->
+    <div id="sports" class="container-xxl py-5 bg-light">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Sports Excellence</h6>
+                <h1 class="mb-5">Championship Athletic Programs</h1>
+            </div>
+            <div class="row g-4">
+                {featuredSports.map((sport, index) => (
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay={`${0.1 + index * 0.2}s`}>
+                        <SportsCard sport={sport} showDetails={true} />
+                    </div>
+                ))}
+            </div>
+            <div class="text-center mt-5">
+                <a href="/sports" class="btn btn-primary py-3 px-5">View All Sports Programs</a>
+            </div>
+        </div>
+    </div>
+    <!-- Sports Programs End -->
+
+    <!-- Community Impact Start -->
+    <div id="community" class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Community Engagement</h6>
+                <h1 class="mb-5">Making a Difference Together</h1>
+            </div>
+            <div class="row g-4">
+                {featuredCommunity.map((initiative, index) => (
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay={`${0.1 + index * 0.2}s`}>
+                        <CommunityCard initiative={initiative} showDetails={true} />
+                    </div>
+                ))}
+            </div>
+            <div class="text-center mt-5">
+                <a href="/community" class="btn btn-primary py-3 px-5">See All Initiatives</a>
+            </div>
+        </div>
+    </div>
+    <!-- Community Impact End -->
+
+    <!-- Achievements Highlight Start -->
+    <div id="achievements" class="container-xxl py-5 bg-light">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Our Achievements</h6>
+                <h1 class="mb-5">Celebrating Excellence</h1>
+            </div>
+            <div class="row g-4">
+                {featuredAchievements.map((achievement, index) => (
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay={`${0.1 + index * 0.2}s`}>
+                        <div class="achievement-card h-100">
+                            <div class="card h-100 shadow-sm border-0">
+                                <div class="card-body text-center">
+                                    <div class="achievement-icon mb-3">
+                                        <i class="fas fa-trophy fa-3x text-warning"></i>
+                                    </div>
+                                    <h5 class="card-title text-primary">{achievement.title}</h5>
+                                    <p class="card-text text-muted small mb-3">{achievement.description}</p>
+                                    <div class="achievement-details">
+                                        <div class="row g-2 text-center">
+                                            <div class="col-6">
+                                                <small class="text-muted d-block">Student</small>
+                                                <strong class="small">{achievement.student_name}</strong>
+                                            </div>
+                                            <div class="col-6">
+                                                <small class="text-muted d-block">Grade</small>
+                                                <strong class="small">{achievement.grade}</strong>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <span class={`badge ${achievement.award_level === 'National' ? 'bg-warning' : achievement.award_level === 'Provincial' ? 'bg-info' : 'bg-success'}`}>
+                                                {achievement.award_level} Level
+                                            </span>
+                                            <span class="badge bg-light text-dark ms-2">{achievement.category}</span>
+                                        </div>
+                                        <small class="text-muted d-block mt-2">{new Date(achievement.date).toLocaleDateString()}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <div class="text-center mt-5">
+                <a href="/achievements" class="btn btn-primary py-3 px-5">View All Achievements</a>
+            </div>
+        </div>
+    </div>
+    <!-- Achievements Highlight End -->
+
+    <!-- Call to Action Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="bg-primary rounded p-5 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-white mb-3">Ready to Join Our Community?</h2>
+                        <p class="text-white mb-0">Experience the Elite Academy difference. Schedule a campus tour, meet our dedicated staff, and discover why families choose us for their children's educational journey.</p>
+                    </div>
+                    <div class="col-lg-4 text-center">
+                        <div class="d-flex flex-column gap-3">
+                            <a href="/contact" class="btn btn-light py-3 px-4">
+                                <i class="fas fa-calendar-alt me-2"></i>Schedule a Visit
+                            </a>
+                            <a href="/admissions" class="btn btn-outline-light py-3 px-4">
+                                <i class="fas fa-user-graduate me-2"></i>Apply Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Call to Action End -->
+
+
+</Layout>
+
+<style>
+    .achievement-card {
+        transition: transform 0.3s ease;
+    }
+
+    .achievement-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .achievement-icon {
+        margin-bottom: 1rem;
+    }
+
+    .achievement-details {
+        border-top: 1px solid #eee;
+        padding-top: 1rem;
+        margin-top: 1rem;
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .card:hover {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+    }
+
+    .badge {
+        font-size: 0.75rem;
+    }
+
+    .bg-light {
+        background-color: #f8f9fa !important;
+    }
+
+    .section-padding {
+        padding: 80px 0;
+    }
+
+    @media (max-width: 768px) {
+        .section-padding {
+            padding: 60px 0;
+        }
+        
+        .d-flex.gap-3 {
+            flex-direction: column;
+        }
+    }
+</style>

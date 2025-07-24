@@ -1,0 +1,154 @@
+[
+  {
+    "id": 1,
+    "name": "Reading Buddies Program",
+    "description": "Grade 6 and 7 students mentor younger learners in reading, fostering literacy and building confidence across age groups.",
+    "category": "Education",
+    "target_beneficiaries": "Foundation Phase learners",
+    "frequency": "Daily during break time",
+    "participants": 45,
+    "coordinator": "Ms. Elena van der Merwe",
+    "impact": {
+      "students_helped": 120,
+      "reading_improvement": "35% average improvement in reading levels",
+      "community_reach": "School community"
+    },
+    "image": "/img/testimonial-1.jpg",
+    "is_featured": true,
+    "year_started": 2022,
+    "partnerships": ["Local Library", "Parent Volunteers"]
+  },
+  {
+    "id": 2,
+    "name": "Community Vegetable Garden",
+    "description": "Students and community members work together to maintain a vegetable garden that supplies fresh produce to local families in need.",
+    "category": "Environmental",
+    "target_beneficiaries": "Local families, school nutrition program",
+    "frequency": "Weekly maintenance sessions",
+    "participants": 60,
+    "coordinator": "Mr. Thabo Mthembu",
+    "impact": {
+      "families_served": 25,
+      "vegetables_produced": "500kg annually",
+      "community_reach": "Surrounding neighborhoods"
+    },
+    "image": "/img/testimonial-2.jpg",
+    "is_featured": true,
+    "year_started": 2020,
+    "partnerships": ["Department of Agriculture", "Local Farmers Association"]
+  },
+  {
+    "id": 3,
+    "name": "Elderly Care Visits",
+    "description": "Monthly visits to local elderly care facilities where students perform songs, read stories, and spend time with residents.",
+    "category": "Social Care",
+    "target_beneficiaries": "Elderly residents in care facilities",
+    "frequency": "Monthly visits",
+    "participants": 30,
+    "coordinator": "Mrs. Patience Ramavhoya",
+    "impact": {
+      "residents_visited": 80,
+      "facilities_served": 3,
+      "community_reach": "Greater municipal area"
+    },
+    "image": "/img/testimonial-3.jpg",
+    "is_featured": true,
+    "year_started": 2021,
+    "partnerships": ["Sunset Manor", "Golden Years Care", "Community Health Center"]
+  },
+  {
+    "id": 4,
+    "name": "Environmental Clean-Up Drives",
+    "description": "Quarterly community clean-up initiatives where students, parents, and community members work together to clean local areas.",
+    "category": "Environmental",
+    "target_beneficiaries": "Local community and environment",
+    "frequency": "Quarterly events",
+    "participants": 150,
+    "coordinator": "Environmental Club",
+    "impact": {
+      "areas_cleaned": "12 locations annually",
+      "waste_collected": "2 tons per event",
+      "community_reach": "Entire ward area"
+    },
+    "image": "/img/carousel-1.jpg",
+    "is_featured": false,
+    "year_started": 2019,
+    "partnerships": ["Municipal Waste Management", "Local Businesses", "Community Leaders"]
+  },
+  {
+    "id": 5,
+    "name": "Digital Literacy for Parents",
+    "description": "Evening classes where students teach their parents and community members basic computer skills and digital literacy.",
+    "category": "Education",
+    "target_beneficiaries": "Parents and community adults",
+    "frequency": "Weekly evening sessions",
+    "participants": 25,
+    "coordinator": "Dr. Maria Rodriguez",
+    "impact": {
+      "adults_trained": 85,
+      "skills_acquired": "Basic computer, internet, email",
+      "community_reach": "Local families"
+    },
+    "image": "/img/testimonial-4.jpg",
+    "is_featured": true,
+    "year_started": 2023,
+    "partnerships": ["Local Internet Café", "Adult Education Center"]
+  },
+  {
+    "id": 6,
+    "name": "Health Awareness Campaigns",
+    "description": "Student-led health education campaigns focusing on hygiene, nutrition, and disease prevention in the community.",
+    "category": "Health",
+    "target_beneficiaries": "Community members of all ages",
+    "frequency": "Monthly campaigns",
+    "participants": 40,
+    "coordinator": "School Health Committee",
+    "impact": {
+      "people_reached": 500,
+      "health_screenings": "200 annually",
+      "community_reach": "Multiple neighborhoods"
+    },
+    "image": "/img/about.jpg",
+    "is_featured": false,
+    "year_started": 2020,
+    "partnerships": ["Local Clinic", "Department of Health", "Community Health Workers"]
+  },
+  {
+    "id": 7,
+    "name": "Cultural Heritage Preservation",
+    "description": "Students interview community elders and document local history, traditions, and cultural practices for preservation.",
+    "category": "Cultural",
+    "target_beneficiaries": "Community heritage preservation",
+    "frequency": "Ongoing project",
+    "participants": 35,
+    "coordinator": "Ms. Grace Mulaudzi",
+    "impact": {
+      "stories_documented": 150,
+      "elders_interviewed": 45,
+      "community_reach": "Historical community records"
+    },
+    "image": "/img/carousel-2.jpg",
+    "is_featured": true,
+    "year_started": 2021,
+    "partnerships": ["Local Museum", "Traditional Council", "University Research Department"]
+  },
+  {
+    "id": 8,
+    "name": "Youth Entrepreneurship Mentoring",
+    "description": "Older students mentor younger ones in developing small business ideas and entrepreneurial skills.",
+    "category": "Economic Development",
+    "target_beneficiaries": "Grade 4-6 students",
+    "frequency": "Weekly mentoring sessions",
+    "participants": 50,
+    "coordinator": "Mr. Michael O'Connor",
+    "impact": {
+      "businesses_started": 12,
+      "students_mentored": 75,
+      "community_reach": "School and local market"
+    },
+    "image": "/img/cat-3.jpg",
+    "is_featured": false,
+    "year_started": 2022,
+    "partnerships": ["Local Business Chamber", "Youth Development Agency", "Microfinance Institution"]
+  }
+]

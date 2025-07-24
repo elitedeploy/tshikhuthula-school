@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <defs>
+    <style>
+      .lantern-body { fill: #B91C1C; stroke: #7F1D1D; stroke-width: 0.4; }
+      .lantern-metal { fill: #7F1D1D; }
+      .flame { fill: #FCD34D; }
+      .handle { fill: none; stroke: #7F1D1D; stroke-width: 0.6; stroke-linecap: round; }
+    </style>
+  </defs>
+  
+  <!-- Main lantern body -->
+  <ellipse cx="8" cy="9.5" rx="3.5" ry="4.5" class="lantern-body"/>
+  
+  <!-- Top cap -->
+  <rect x="6.25" y="4" width="3.5" height="1.25" rx="0.4" class="lantern-body"/>
+  
+  <!-- Handle -->
+  <path d="M7.25 3.5 Q8 2.75 8.75 3.5" class="handle"/>
+  
+  <!-- Bottom cap -->
+  <rect x="6.5" y="13.5" width="3" height="1" rx="0.4" class="lantern-body"/>
+  
+  <!-- Decorative bands -->
+  <rect x="6.25" y="6" width="3.5" height="0.4" class="lantern-metal"/>
+  <rect x="6.25" y="12.5" width="3.5" height="0.4" class="lantern-metal"/>
+  
+  <!-- Flame -->
+  <path d="M8 9.25 Q7.25 8 8 7 Q8.75 8 8 9.25" class="flame"/>
+</svg>

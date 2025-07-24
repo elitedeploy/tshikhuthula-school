@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Sarah Johnson",
+    "position": "Principal",
+    "department": "Leadership",
+    "email": "principal@tshikhuthula.edu",
+    "phone": "+27 11 123 4567",
+    "bio": "Dr. Johnson has over 20 years of experience in education leadership and is passionate about creating an inclusive learning environment.",
+    "image": "/img/team-1.jpg",
+    "qualifications": ["PhD in Education", "Masters in Educational Leadership"],
+    "is_featured": true
+  },
+  {
+    "id": 2,
+    "name": "Mr. Michael Thompson",
+    "position": "Deputy Principal",
+    "department": "Leadership",
+    "email": "deputy@tshikhuthula.edu",
+    "phone": "+27 11 123 4568",
+    "bio": "Mr. Thompson oversees academic programs and student development initiatives.",
+    "image": "/img/team-2.jpg",
+    "qualifications": ["Masters in Education", "Bachelor of Arts"],
+    "is_featured": true
+  },
+  {
+    "id": 3,
+    "name": "Ms. Jennifer Adams",
+    "position": "Grade 1 Teacher",
+    "department": "Foundation Phase",
+    "email": "j.adams@tshikhuthula.edu",
+    "phone": "+27 11 123 4569",
+    "bio": "Ms. Adams specializes in early childhood education and has been with our school for 8 years.",
+    "image": "/img/team-3.jpg",
+    "qualifications": ["Bachelor of Education", "Early Childhood Development Certificate"],
+    "is_featured": false
+  },
+  {
+    "id": 4,
+    "name": "Mr. David Wilson",
+    "position": "Mathematics Teacher",
+    "department": "Intermediate Phase",
+    "email": "d.wilson@tshikhuthula.edu",
+    "phone": "+27 11 123 4570",
+    "bio": "Mr. Wilson brings innovative teaching methods to mathematics education.",
+    "image": "/img/team-4.jpg",
+    "qualifications": ["Bachelor of Science", "Post Graduate Certificate in Education"],
+    "is_featured": false
+  },
+  {
+    "id": 5,
+    "name": "Mrs. Lisa Brown",
+    "position": "English Teacher",
+    "department": "Senior Phase",
+    "email": "l.brown@tshikhuthula.edu",
+    "phone": "+27 11 123 4571",
+    "bio": "Mrs. Brown is passionate about literature and creative writing.",
+    "image": "/img/team-1.jpg",
+    "qualifications": ["Bachelor of Arts in English", "Honours in Literature"],
+    "is_featured": false
+  },
+  {
+    "id": 6,
+    "name": "Mr. James Miller",
+    "position": "School Secretary",
+    "department": "Support Staff",
+    "email": "secretary@tshikhuthula.edu",
+    "phone": "+27 11 123 4572",
+    "bio": "Mr. Miller manages administrative tasks and supports school operations.",
+    "image": "/img/team-2.jpg",
+    "qualifications": ["Diploma in Office Administration"],
+    "is_featured": false
+  }
+]

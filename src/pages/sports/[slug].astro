@@ -1,0 +1,215 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import sportsData from '../../data/sports.json';
+import { generateSlug } from '../../utils/slug';
+
+export async function getStaticPaths() {
+  return sportsData.map((sport) => ({
+    params: { slug: generateSlug(sport.name) },
+    props: { sport },
+  }));
+}
+
+const { sport } = Astro.props;
+---
+
+<Layout title={`${sport.name} - Elite Academy Sports`}>
+  <!-- Header Start -->
+  <div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <h1 class="display-3 text-white animated slideInDown">{sport.name}</h1>
+          <p class="lead text-white mb-4">{sport.category} Program</p>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+              <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+              <li class="breadcrumb-item"><a class="text-white" href="/about">About</a></li>
+              <li class="breadcrumb-item text-white active" aria-current="page">{sport.name}</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header End -->
+
+  <!-- Sport Details Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-6">
+          <!-- Sport Image -->
+          <div class="position-relative overflow-hidden rounded">
+            <img class="img-fluid w-100" src={sport.image} alt={sport.name} style="height: 400px; object-fit: cover;" />
+            {sport.is_featured && (
+              <div class="position-absolute top-0 start-0 m-3">
+                <span class="badge bg-warning text-dark fs-6">
+                  <i class="fas fa-star me-1"></i>Featured Program
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <!-- Sport Info -->
+          <div class="mb-4">
+            <h3 class="mb-3">About This Program</h3>
+            <p class="lead mb-4">{sport.description}</p>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <div class="bg-light rounded p-3 text-center">
+                <i class="fas fa-users fa-2x text-primary mb-2"></i>
+                <h6>Participants</h6>
+                <p class="mb-0">{sport.participants} students</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bg-light rounded p-3 text-center">
+                <i class="fas fa-calendar fa-2x text-primary mb-2"></i>
+                <h6>Season</h6>
+                <p class="mb-0">{sport.season}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category and Age Groups -->
+          <div class="mb-4">
+            <span class="badge bg-primary fs-6 px-3 py-2 me-2">
+              <i class="fas fa-tag me-1"></i>{sport.category}
+            </span>
+            <span class="badge bg-secondary fs-6 px-3 py-2">
+              <i class="fas fa-child me-1"></i>Ages: {sport.age_groups}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Sport Details End -->
+
+  <!-- Coach and Training -->
+  <div class="container-xxl py-5 bg-light">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-6">
+          <h3 class="mb-4">Coach Information</h3>
+          <div class="bg-white rounded p-4">
+            <div class="d-flex align-items-center mb-3">
+              <i class="fas fa-user-tie fa-2x text-primary me-3"></i>
+              <div>
+                <h5 class="mb-1">{sport.coach}</h5>
+                <p class="text-muted mb-0">Head Coach</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <h3 class="mb-4">Training Schedule</h3>
+          <div class="bg-white rounded p-4">
+            <div class="d-flex align-items-center">
+              <i class="fas fa-clock fa-2x text-primary me-3"></i>
+              <div>
+                <h6>Training Times</h6>
+                <p class="mb-0">{sport.training_schedule}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Coach and Training End -->
+
+  <!-- Equipment and Achievements -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-6">
+          <h3 class="mb-4">Equipment Information</h3>
+          <div class="bg-light rounded p-4">
+            <div class="d-flex align-items-center">
+              <i class={`fas ${sport.equipment_provided ? 'fa-check-circle text-success' : 'fa-times-circle text-warning'} fa-2x me-3`}></i>
+              <div>
+                <h6>Equipment Provided</h6>
+                <p class="mb-0">
+                  {sport.equipment_provided ? 'All necessary equipment is provided by the school' : 'Students need to bring their own equipment'}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <h3 class="mb-4">Recent Achievements</h3>
+          <div class="row g-3">
+            {sport.achievements.map((achievement) => (
+              <div class="col-12">
+                <div class="d-flex align-items-center bg-light rounded p-3">
+                  <i class="fas fa-trophy text-warning me-3 fs-5"></i>
+                  <span>{achievement}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Equipment and Achievements End -->
+
+  <!-- Join Program CTA -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="bg-light rounded p-5 text-center">
+            <h4 class="mb-4">Join Our {sport.name} Program</h4>
+            <p class="mb-4">
+              Ready to be part of our {sport.name} team? We welcome students of all skill levels 
+              and provide comprehensive training and equipment.
+            </p>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <a class="btn btn-primary py-3 px-5" href="/contact">
+                  <i class="fas fa-info-circle me-2"></i>Get More Info
+                </a>
+              </div>
+              <div class="col-sm-6">
+                <a class="btn btn-outline-primary py-3 px-5" href="/admissions">
+                  <i class="fas fa-user-plus me-2"></i>Apply Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Join Program CTA End -->
+
+  <!-- Back to About -->
+  <div class="container-xxl py-3">
+    <div class="container">
+      <div class="text-center">
+        <a href="/about" class="btn btn-outline-primary">
+          <i class="fas fa-arrow-left me-2"></i>Back to About Us
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url('/img/carousel-2.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>

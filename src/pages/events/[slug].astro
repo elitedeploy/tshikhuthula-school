@@ -1,0 +1,194 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events');
+  return events.map((event) => ({
+    params: { slug: event.slug },
+    props: { event },
+  }));
+}
+
+const { event } = Astro.props;
+const { Content } = await event.render();
+
+// Function to check if event is upcoming
+const isUpcoming = (eventDate: string) => {
+  return new Date(eventDate) >= new Date();
+};
+
+// Format date for display
+const formatDate = (dateString: string) => {
+  return new Date(dateString).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    weekday: 'long'
+  });
+};
+---
+
+<Layout title={`${event.data.title} - Tshikhuthula School Events`}>
+  <!-- Header Start -->
+  <div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <h1 class="display-3 text-white animated slideInDown">{event.data.title}</h1>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+              <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+              <li class="breadcrumb-item"><a class="text-white" href="/events">Events</a></li>
+              <li class="breadcrumb-item text-white active" aria-current="page">{event.data.title}</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header End -->
+
+  <!-- Event Details Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-8">
+          <!-- Event Image -->
+          {event.data.image && (
+            <div class="mb-5">
+              <img class="img-fluid rounded" src={event.data.image} alt={event.data.title} />
+            </div>
+          )}
+
+          <!-- Event Content -->
+          <div class="event-content">
+            <Content />
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <!-- Event Info Card -->
+          <div class="bg-light rounded p-4 mb-4">
+            <h5 class="mb-4">Event Details</h5>
+            
+            <div class="d-flex align-items-center mb-3">
+              <i class="fa fa-calendar text-primary me-3"></i>
+              <div>
+                <strong>Date:</strong><br>
+                <span>{formatDate(event.data.date)}</span>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center mb-3">
+              <i class="fa fa-clock text-primary me-3"></i>
+              <div>
+                <strong>Time:</strong><br>
+                <span>{event.data.time}</span>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center mb-3">
+              <i class="fa fa-map-marker-alt text-primary me-3"></i>
+              <div>
+                <strong>Location:</strong><br>
+                <span>{event.data.location}</span>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center mb-3">
+              <i class="fa fa-tag text-primary me-3"></i>
+              <div>
+                <strong>Category:</strong><br>
+                <span class="badge bg-primary">{event.data.category}</span>
+              </div>
+            </div>
+
+            {event.data.registration_required && (
+              <div class="d-flex align-items-center mb-3">
+                <i class="fa fa-user-plus text-primary me-3"></i>
+                <div>
+                  <strong>Registration:</strong><br>
+                  <span class="text-warning">Required</span>
+                </div>
+              </div>
+            )}
+
+            {isUpcoming(event.data.date) && (
+              <div class="mt-4">
+                {event.data.registration_required ? (
+                  <a href="/contact" class="btn btn-primary w-100">Register Now</a>
+                ) : (
+                  <div class="alert alert-success text-center">
+                    <i class="fa fa-check-circle me-2"></i>
+                    No registration required
+                  </div>
+                )}
+              </div>
+            )}
+
+            {!isUpcoming(event.data.date) && (
+              <div class="alert alert-secondary text-center">
+                <i class="fa fa-clock me-2"></i>
+                This event has passed
+              </div>
+            )}
+          </div>
+
+          <!-- Contact Info -->
+          <div class="bg-light rounded p-4">
+            <h5 class="mb-4">Need More Information?</h5>
+            <p class="mb-3">Contact our school office for more details about this event.</p>
+            <div class="mb-2">
+              <i class="fa fa-phone text-primary me-2"></i>
+              <span>+27 11 123 4567</span>
+            </div>
+            <div class="mb-3">
+              <i class="fa fa-envelope text-primary me-2"></i>
+              <span>info@tshikhuthula.edu</span>
+            </div>
+            <a href="/contact" class="btn btn-outline-primary w-100">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Event Details End -->
+
+  <!-- Back to Events -->
+  <div class="container-xxl py-3">
+    <div class="container">
+      <div class="text-center">
+        <a href="/events" class="btn btn-outline-primary">
+          <i class="fa fa-arrow-left me-2"></i>Back to All Events
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .event-content {
+    line-height: 1.8;
+  }
+  
+  .event-content h2 {
+    color: #2c3e50;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .event-content h3 {
+    color: #34495e;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .event-content ul {
+    margin-bottom: 1.5rem;
+  }
+  
+  .event-content li {
+    margin-bottom: 0.5rem;
+  }
+</style>

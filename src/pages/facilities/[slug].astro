@@ -1,0 +1,160 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import facilitiesData from '../../data/facilities.json';
+import { generateSlug } from '../../utils/slug';
+
+export async function getStaticPaths() {
+  return facilitiesData.map((facility) => ({
+    params: { slug: generateSlug(facility.name) },
+    props: { facility },
+  }));
+}
+
+const { facility } = Astro.props;
+---
+
+<Layout title={`${facility.name} - Elite Academy Facilities`}>
+  <!-- Header Start -->
+  <div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <h1 class="display-3 text-white animated slideInDown">{facility.name}</h1>
+          <p class="lead text-white mb-4">{facility.category} Facility</p>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+              <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+              <li class="breadcrumb-item"><a class="text-white" href="/about">About</a></li>
+              <li class="breadcrumb-item text-white active" aria-current="page">{facility.name}</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header End -->
+
+  <!-- Facility Details Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-6">
+          <!-- Facility Image -->
+          <div class="position-relative overflow-hidden rounded">
+            <img class="img-fluid w-100" src={facility.image} alt={facility.name} style="height: 400px; object-fit: cover;" />
+            {facility.is_featured && (
+              <div class="position-absolute top-0 start-0 m-3">
+                <span class="badge bg-warning text-dark fs-6">
+                  <i class="fas fa-star me-1"></i>Featured Facility
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <!-- Facility Info -->
+          <div class="mb-4">
+            <h3 class="mb-3">About This Facility</h3>
+            <p class="lead mb-4">{facility.description}</p>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <div class="bg-light rounded p-3 text-center">
+                <i class="fas fa-users fa-2x text-primary mb-2"></i>
+                <h6>Capacity</h6>
+                <p class="mb-0">{facility.capacity} people</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bg-light rounded p-3 text-center">
+                <i class="fas fa-calendar fa-2x text-primary mb-2"></i>
+                <h6>Established</h6>
+                <p class="mb-0">{facility.year_established}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Badge -->
+          <div class="mb-4">
+            <span class="badge bg-primary fs-6 px-3 py-2">
+              <i class="fas fa-tag me-1"></i>{facility.category}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Facility Details End -->
+
+  <!-- Features Section -->
+  <div class="container-xxl py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h3 class="mb-4">Facility Features</h3>
+          <div class="row g-3">
+            {facility.features.map((feature) => (
+              <div class="col-md-6 col-lg-4">
+                <div class="d-flex align-items-center bg-white rounded p-3 h-100">
+                  <i class="fas fa-check-circle text-success me-3 fs-5"></i>
+                  <span>{feature}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Features Section End -->
+
+  <!-- Usage Information -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="bg-light rounded p-5 text-center">
+            <h4 class="mb-4">How This Facility is Used</h4>
+            <p class="mb-4">{facility.usage}</p>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <a class="btn btn-primary py-3 px-5" href="/contact">
+                  <i class="fas fa-calendar me-2"></i>Book a Visit
+                </a>
+              </div>
+              <div class="col-sm-6">
+                <a class="btn btn-outline-primary py-3 px-5" href="/admissions">
+                  <i class="fas fa-user-plus me-2"></i>Apply Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Usage Information End -->
+
+  <!-- Back to About -->
+  <div class="container-xxl py-3">
+    <div class="container">
+      <div class="text-center">
+        <a href="/about" class="btn btn-outline-primary">
+          <i class="fas fa-arrow-left me-2"></i>Back to About Us
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url('/img/carousel-1.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>

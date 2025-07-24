@@ -1,0 +1,122 @@
+---
+export interface FilterProps {
+  items: any[];
+  filterKey: string;
+  filterOptions: string[];
+  allLabel?: string;
+  buttonClass?: string;
+  containerClass?: string;
+  itemSelector: string;
+  itemDataAttribute: string;
+  filterType?: 'class' | 'data' | 'style';
+}
+
+const {
+  items,
+  filterKey,
+  filterOptions,
+  allLabel = "All",
+  buttonClass = "btn btn-outline-primary m-1",
+  containerClass = "text-center mb-5",
+  itemSelector,
+  itemDataAttribute,
+  filterType = 'style'
+} = Astro.props as FilterProps;
+
+// Generate unique ID for this filter instance
+const filterId = `filter-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class={containerClass}>
+  <button 
+    class={`${buttonClass} filter-btn active`} 
+    data-filter="all"
+    data-filter-id={filterId}
+  >
+    {allLabel}
+  </button>
+  {filterOptions.map((option) => (
+    <button 
+      class={`${buttonClass} filter-btn`} 
+      data-filter={option.toLowerCase().replace(/\s+/g, '-')}
+      data-filter-id={filterId}
+    >
+      {option}
+    </button>
+  ))}
+</div>
+
+<script define:vars={{ filterId, itemSelector, itemDataAttribute, filterType }}>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll(`[data-filter-id="${filterId}"]`);
+    const items = document.querySelectorAll(itemSelector);
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        
+        // Update active button
+        filterButtons.forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.classList.contains('btn-primary')) {
+            btn.classList.remove('btn-primary');
+            btn.classList.add('btn-outline-primary');
+          }
+        });
+        
+        this.classList.add('active');
+        if (this.classList.contains('btn-outline-primary')) {
+          this.classList.remove('btn-outline-primary');
+          this.classList.add('btn-primary');
+        }
+        
+        // Filter items based on type
+        items.forEach(item => {
+          const htmlItem = item;
+          
+          if (filter === 'all') {
+            if (filterType === 'style') {
+              htmlItem.style.display = 'block';
+            } else if (filterType === 'class') {
+              htmlItem.classList.remove('hidden');
+            }
+          } else {
+            const itemValue = htmlItem.getAttribute(itemDataAttribute) || htmlItem.dataset[itemDataAttribute.replace('data-', '')];
+            const matches = itemValue === filter || 
+                          (filterType === 'class' && htmlItem.classList.contains(filter.substring(1)));
+            
+            if (matches) {
+              if (filterType === 'style') {
+                htmlItem.style.display = 'block';
+              } else if (filterType === 'class') {
+                htmlItem.classList.remove('hidden');
+              }
+            } else {
+              if (filterType === 'style') {
+                htmlItem.style.display = 'none';
+              } else if (filterType === 'class') {
+                htmlItem.classList.add('hidden');
+              }
+            }
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  .filter-btn.active {
+    background-color: var(--bs-primary, #0d6efd);
+    color: white;
+    border-color: var(--bs-primary, #0d6efd);
+  }
+  
+  .filter-btn {
+    transition: all 0.3s ease;
+  }
+  
+  .filter-btn:hover {
+    transform: translateY(-2px);
+  }
+</style>

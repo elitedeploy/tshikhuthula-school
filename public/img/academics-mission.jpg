@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7b68ee;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- School building silhouette -->
+  <rect x="100" y="200" width="600" height="150" fill="#2c3e50" opacity="0.8"/>
+  <polygon points="100,200 400,120 700,200" fill="#34495e" opacity="0.8"/>
+  
+  <!-- Windows -->
+  <rect x="150" y="230" width="40" height="50" fill="#f39c12" opacity="0.9"/>
+  <rect x="220" y="230" width="40" height="50" fill="#f39c12" opacity="0.9"/>
+  <rect x="290" y="230" width="40" height="50" fill="#f39c12" opacity="0.9"/>
+  <rect x="470" y="230" width="40" height="50" fill="#f39c12" opacity="0.9"/>
+  <rect x="540" y="230" width="40" height="50" fill="#f39c12" opacity="0.9"/>
+  <rect x="610" y="230" width="40" height="50" fill="#f39c12" opacity="0.9"/>
+  
+  <!-- Door -->
+  <rect x="360" y="280" width="80" height="70" fill="#8b4513"/>
+  <circle cx="420" cy="315" r="3" fill="#ffd700"/>
+  
+  <!-- Books floating -->
+  <rect x="200" y="80" width="30" height="40" fill="#e74c3c" transform="rotate(15 215 100)"/>
+  <rect x="250" y="60" width="30" height="40" fill="#2ecc71" transform="rotate(-10 265 80)"/>
+  <rect x="300" y="90" width="30" height="40" fill="#3498db" transform="rotate(20 315 110)"/>
+  <rect x="450" y="70" width="30" height="40" fill="#f39c12" transform="rotate(-15 465 90)"/>
+  <rect x="500" y="85" width="30" height="40" fill="#9b59b6" transform="rotate(10 515 105)"/>
+  
+  <!-- Stars -->
+  <polygon points="150,50 155,65 170,65 158,75 163,90 150,80 137,90 142,75 130,65 145,65" fill="#fff" opacity="0.8"/>
+  <polygon points="600,40 603,50 613,50 605,56 608,66 600,60 592,66 595,56 587,50 597,50" fill="#fff" opacity="0.8"/>
+  <polygon points="680,80 683,90 693,90 685,96 688,106 680,100 672,106 675,96 667,90 677,90" fill="#fff" opacity="0.8"/>
+  
+  <!-- Text -->
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="36" font-weight="bold" text-anchor="middle" fill="#fff">Academic Excellence</text>
+  <text x="400" y="380" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#fff">Empowering minds through quality education</text>
+</svg>

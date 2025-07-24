@@ -1,0 +1,153 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CommunityCard from '../../components/CommunityCard.astro';
+import communityData from '../../data/community.json';
+
+const pageTitle = 'Community Initiatives';
+const pageDescription = 'Discover our community outreach programs that connect our school with the broader community through service, education, and collaboration.';
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <!-- Header Start -->
+  <div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <h1 class="display-3 text-white animated slideInDown">{pageTitle}</h1>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+              <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+              <li class="breadcrumb-item text-white active" aria-current="page">Community</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header End -->
+
+  <!-- Community Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <h6 class="section-title bg-white text-primary px-3">Community Outreach</h6>
+        <h1 class="mb-5">Making a Difference Together</h1>
+        <p class="mb-5">Our school believes in the power of community engagement. Through various initiatives, our students learn the importance of service, develop empathy, and contribute meaningfully to society while building valuable life skills and connections.</p>
+      </div>
+      
+      <!-- Featured Initiatives -->
+      <div class="row mb-5">
+        <div class="col-12">
+          <h3 class="mb-4">Featured Initiatives</h3>
+        </div>
+        {communityData.filter(initiative => initiative.is_featured).map((initiative) => (
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <CommunityCard initiative={initiative} />
+          </div>
+        ))}
+      </div>
+
+      <!-- All Community Programs -->
+      <div class="row">
+        <div class="col-12">
+          <h3 class="mb-4">All Community Programs</h3>
+        </div>
+        {communityData.map((initiative) => (
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <CommunityCard initiative={initiative} />
+          </div>
+        ))}
+      </div>
+
+      <!-- Impact Statistics -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="bg-light rounded p-4">
+            <h4 class="mb-4 text-center">Community Impact Statistics</h4>
+            <div class="row text-center">
+              <div class="col-md-3 col-6">
+                <div class="counter">
+                  <h2 class="text-primary">{communityData.length}</h2>
+                  <p>Active Programs</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-6">
+                <div class="counter">
+                  <h2 class="text-primary">{communityData.reduce((total, initiative) => total + initiative.participants, 0)}</h2>
+                  <p>Student Participants</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-6">
+                <div class="counter">
+                  <h2 class="text-primary">{new Set(communityData.map(initiative => initiative.category)).size}</h2>
+                  <p>Focus Areas</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-6">
+                <div class="counter">
+                  <h2 class="text-primary">{communityData.reduce((total, initiative) => {
+                    const partnerships = initiative.partnerships ? initiative.partnerships.length : 0;
+                    return total + partnerships;
+                  }, 0)}</h2>
+                  <p>Community Partners</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories Overview -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <h4 class="mb-4 text-center">Program Categories</h4>
+          <div class="row">
+            {Array.from(new Set(communityData.map(initiative => initiative.category))).map((category) => {
+              const categoryInitiatives = communityData.filter(initiative => initiative.category === category);
+              return (
+                <div class="col-md-6 col-lg-3 mb-3">
+                  <div class="text-center p-3 border rounded">
+                    <h5 class="text-primary">{category}</h5>
+                    <p class="mb-1">{categoryInitiatives.length} Programs</p>
+                    <small class="text-muted">{categoryInitiatives.reduce((total, initiative) => total + initiative.participants, 0)} Participants</small>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Community End -->
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url('/img/about.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .section-title {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .counter h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .counter p {
+    font-size: 1rem;
+    margin-bottom: 0;
+    color: #6c757d;
+  }
+</style>

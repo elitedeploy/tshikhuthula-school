@@ -1,0 +1,217 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import communityData from '../../data/community.json';
+import { generateSlug } from '../../utils/slug';
+
+export async function getStaticPaths() {
+  return communityData.map((initiative) => ({
+    params: { slug: generateSlug(initiative.name) },
+    props: { initiative },
+  }));
+}
+
+const { initiative } = Astro.props;
+---
+
+<Layout title={`${initiative.name} - Elite Academy Community`}>
+  <!-- Header Start -->
+  <div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <h1 class="display-3 text-white animated slideInDown">{initiative.name}</h1>
+          <p class="lead text-white mb-4">{initiative.category} Initiative</p>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+              <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+              <li class="breadcrumb-item"><a class="text-white" href="/about">About</a></li>
+              <li class="breadcrumb-item text-white active" aria-current="page">{initiative.name}</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header End -->
+
+  <!-- Initiative Details Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-6">
+          <!-- Initiative Image -->
+          <div class="position-relative overflow-hidden rounded">
+            <img class="img-fluid w-100" src={initiative.image} alt={initiative.name} style="height: 400px; object-fit: cover;" />
+            {initiative.is_featured && (
+              <div class="position-absolute top-0 start-0 m-3">
+                <span class="badge bg-warning text-dark fs-6">
+                  <i class="fas fa-heart me-1"></i>Featured Initiative
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <!-- Initiative Info -->
+          <div class="mb-4">
+            <h3 class="mb-3">About This Initiative</h3>
+            <p class="lead mb-4">{initiative.description}</p>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <div class="bg-light rounded p-3 text-center">
+                <i class="fas fa-users fa-2x text-primary mb-2"></i>
+                <h6>Participants</h6>
+                <p class="mb-0">{initiative.participants} people</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bg-light rounded p-3 text-center">
+                <i class="fas fa-calendar fa-2x text-primary mb-2"></i>
+                <h6>Since</h6>
+                <p class="mb-0">{initiative.year_started}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category and Frequency -->
+          <div class="mb-4">
+            <span class="badge bg-primary fs-6 px-3 py-2 me-2">
+              <i class="fas fa-tag me-1"></i>{initiative.category}
+            </span>
+            <span class="badge bg-secondary fs-6 px-3 py-2">
+              <i class="fas fa-clock me-1"></i>{initiative.frequency}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Initiative Details End -->
+
+  <!-- Coordinator and Target -->
+  <div class="container-xxl py-5 bg-light">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-6">
+          <h3 class="mb-4">Program Coordinator</h3>
+          <div class="bg-white rounded p-4">
+            <div class="d-flex align-items-center mb-3">
+              <i class="fas fa-user-tie fa-2x text-primary me-3"></i>
+              <div>
+                <h5 class="mb-1">{initiative.coordinator}</h5>
+                <p class="text-muted mb-0">Program Coordinator</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <h3 class="mb-4">Target Beneficiaries</h3>
+          <div class="bg-white rounded p-4">
+            <div class="d-flex align-items-center">
+              <i class="fas fa-bullseye fa-2x text-primary me-3"></i>
+              <div>
+                <h6>Who We Help</h6>
+                <p class="mb-0">{initiative.target_beneficiaries}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Coordinator and Target End -->
+
+  <!-- Impact and Partnerships -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-6">
+          <h3 class="mb-4">Impact Highlights</h3>
+          <div class="row g-3">
+            {Object.entries(initiative.impact).map(([key, value]) => (
+              <div class="col-12">
+                <div class="d-flex align-items-center bg-light rounded p-3">
+                  <i class="fas fa-chart-line text-success me-3 fs-5"></i>
+                  <div>
+                    <strong>{key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}:</strong>
+                    <span class="ms-2">{value}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <h3 class="mb-4">Community Partners</h3>
+          <div class="row g-3">
+            {initiative.partnerships.map((partner) => (
+              <div class="col-12">
+                <div class="d-flex align-items-center bg-light rounded p-3">
+                  <i class="fas fa-handshake text-primary me-3 fs-5"></i>
+                  <span>{partner}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Impact and Partnerships End -->
+
+  <!-- Get Involved CTA -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="bg-light rounded p-5 text-center">
+            <h4 class="mb-4">Get Involved with {initiative.name}</h4>
+            <p class="mb-4">
+              Join us in making a difference in our community. Whether you're a student, parent, 
+              or community member, there are many ways to contribute to this meaningful initiative.
+            </p>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <a class="btn btn-primary py-3 px-5" href="/contact">
+                  <i class="fas fa-hands-helping me-2"></i>Volunteer
+                </a>
+              </div>
+              <div class="col-sm-6">
+                <a class="btn btn-outline-primary py-3 px-5" href="/contact">
+                  <i class="fas fa-info-circle me-2"></i>Learn More
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Get Involved CTA End -->
+
+  <!-- Back to About -->
+  <div class="container-xxl py-3">
+    <div class="container">
+      <div class="text-center">
+        <a href="/about" class="btn btn-outline-primary">
+          <i class="fas fa-arrow-left me-2"></i>Back to About Us
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url('/img/about.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>

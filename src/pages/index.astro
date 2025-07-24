@@ -1,0 +1,436 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import PaginationComponent from '../components/PaginationComponent.astro';
+
+// Get featured academics (core subjects) - limit to featured subjects only
+const allAcademics = await getCollection('academics');
+const featuredAcademics = allAcademics.filter(academic => academic.data.is_core_subject);
+
+// Sort featured academics by grade level and then by subject name
+const gradeOrder = ['Grade R', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7'];
+
+const sortedFeaturedAcademics = featuredAcademics.sort((a, b) => {
+  const aGradeIndex = gradeOrder.indexOf(a.data.grade_level);
+  const bGradeIndex = gradeOrder.indexOf(b.data.grade_level);
+  
+  if (aGradeIndex !== bGradeIndex) {
+    return aGradeIndex - bGradeIndex;
+  }
+  
+  return a.data.subject.localeCompare(b.data.subject);
+});
+
+// Function to get appropriate image for each subject
+function getSubjectImage(academic: any) {
+  const subject = academic.data.subject.toLowerCase();
+  
+  if (subject.includes('math') || subject.includes('numeracy')) {
+    return '/img/course-1.jpg';
+  } else if (subject.includes('english') || subject.includes('language') || subject.includes('literacy')) {
+    return '/img/course-2.jpg';
+  } else if (subject.includes('science') || subject.includes('natural')) {
+    return '/img/course-3.jpg';
+  } else if (subject.includes('social') || subject.includes('studies')) {
+    return '/img/about.jpg';
+  } else if (subject.includes('art') || subject.includes('creative')) {
+    return '/img/team-1.jpg';
+  } else if (subject.includes('physical') || subject.includes('sport')) {
+    return '/img/team-2.jpg';
+  } else {
+    return '/img/course-1.jpg'; // Default image
+  }
+}
+
+// Get featured staff members
+const allStaff = await getCollection('staff');
+const featuredStaff = allStaff.filter(staff => staff.data.is_featured).slice(0, 4);
+---
+
+<Layout title="Tshikhuthula Primary School - Nurturing Tomorrow's Leaders">
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div class="owl-carousel header-carousel position-relative">
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="/img/carousel-1.jpg" alt="">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: var(--overlay-dark);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Excellence in Education</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Nurturing Tomorrow's Leaders</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">At Tshikhuthula Primary School, we provide quality education that empowers every child to reach their full potential in a safe, caring, and inspiring environment.</p>
+                                <a href="/about" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Learn More</a>
+                                <a href="/contact" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="/img/carousel-2.jpg" alt="">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: var(--overlay-dark);">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Quality Education</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Building Strong Foundations</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">From Grade R to Grade 7, we offer comprehensive education that builds strong academic foundations while fostering creativity, critical thinking, and character development.</p>
+                                <a href="/academics" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Our Programs</a>
+                                <a href="/admissions" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Apply Today</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">Qualified Teachers</h5>
+                            <p>Our dedicated educators are qualified, experienced, and passionate about nurturing every child's potential</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-users text-primary mb-4"></i>
+                            <h5 class="mb-3">Small Class Sizes</h5>
+                            <p>We maintain small class sizes to ensure personalized attention and optimal learning for every student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-home text-primary mb-4"></i>
+                            <h5 class="mb-3">Safe Environment</h5>
+                            <p>We provide a secure, nurturing environment where children feel safe to learn, explore, and grow</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
+                            <h5 class="mb-3">Rich Resources</h5>
+                            <p>Our well-equipped library and modern facilities support diverse learning styles and interests</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" src="/img/about.jpg" alt="" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
+                    <h1 class="mb-4">Welcome to Tshikhuthula Primary School</h1>
+                    <p class="mb-4">Established in 1995, Tshikhuthula Primary School has been a cornerstone of quality education in our community. We are committed to providing a nurturing environment where every child can thrive academically, socially, and emotionally.</p>
+                    <p class="mb-4">Our school serves learners from Grade R to Grade 7, offering a comprehensive curriculum that prepares students for their future educational journey. We believe in the potential of every child and work tirelessly to unlock their talents and abilities.</p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Qualified Educators</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Modern Facilities</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>CAPS Curriculum</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Extracurricular Activities</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Mother Tongue Support</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Community Focused</p>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="/about">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Featured Academic Subjects Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Featured Subjects</h6>
+                <h1 class="mb-5">Core Academic Subjects</h1>
+                <p class="text-muted mb-4">Explore our featured core subjects that form the foundation of quality education at Tshikhuthula Primary School.</p>
+            </div>
+
+            <!-- Featured Academic Subjects Grid -->
+            <div class="row g-4" id="featuredSubjectsContainer">
+                {sortedFeaturedAcademics.map((academic) => (
+                    <div class="col-lg-4 col-md-6 wow fadeInUp featured-subject-item" data-wow-delay="0.1s">
+                        <div class="course-item bg-light rounded overflow-hidden h-100">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid w-100" src={getSubjectImage(academic)} alt={academic.data.subject} style="height: 250px; object-fit: cover;">
+                            </div>
+                            <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                    <a class="btn btn-sm-square btn-primary mx-1" href={`/academics/${academic.id}`} title="View Details">
+                                        <i class="fas fa-book-open"></i>
+                                    </a>
+                                    <a class="btn btn-sm-square btn-primary mx-1" href="/contact" title="Enroll Now">
+                                        <i class="fas fa-user-plus"></i>
+                                    </a>
+                                    <a class="btn btn-sm-square btn-primary mx-1" href="/contact" title="Contact Us">
+                                        <i class="far fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="text-center p-4 pb-0">
+                                <h3 class="mb-2">{academic.data.subject}</h3>
+                                <div class="mb-3">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="text-muted ms-2">({academic.data.weekly_hours} hrs/week)</small>
+                                </div>
+                                <h5 class="text-primary mb-2">{academic.data.grade_level}</h5>
+                                <div class="mt-2 mb-3">
+                                    <span class="badge bg-primary">{academic.data.curriculum_framework}</span>
+                                    <span class="badge bg-warning ms-1">Featured Subject</span>
+                                </div>
+                                <p class="text-muted small mb-3">
+                                    {academic.data.description.length > 120 
+                                        ? academic.data.description.substring(0, 120) + '...' 
+                                        : academic.data.description
+                                    }
+                                </p>
+                                <a href={`/academics/${academic.id}`} class="btn btn-primary btn-sm mt-2 mb-3">
+                                    Learn More
+                                </a>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>{academic.data.weekly_hours}h/week</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-graduation-cap text-primary me-2"></i>{academic.data.grade_level}</small>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <!-- Pagination Component -->
+            <PaginationComponent 
+                containerId="featuredSubjectsContainer"
+                itemSelector=".featured-subject-item"
+                itemsPerPage={3}
+                paginationId="subjectsPagination"
+                infoId="subjectsInfo"
+                itemName="subjects"
+            />
+
+            <!-- View All Subjects Button -->
+            <div class="text-center mt-4">
+                <a href="/academics" class="btn btn-outline-primary py-3 px-5">
+                    <i class="fas fa-book me-2"></i>View All Academic Subjects
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Featured Academic Subjects End -->
+
+    <!-- Staff Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Our Team</h6>
+                <h1 class="mb-5">Dedicated Educators</h1>
+            </div>
+            <div class="row g-4">
+                {featuredStaff.map((staff, index) => (
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay={`${0.1 + index * 0.2}s`}>
+                        <div class="team-item bg-light rounded overflow-hidden">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid" src={staff.data.image} alt={staff.data.name} />
+                            </div>
+                            <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                    <a class="btn btn-sm-square btn-primary mx-1" href={`mailto:${staff.data.email}`}>
+                                        <i class="far fa-envelope"></i>
+                                    </a>
+                                    {staff.data.phone && (
+                                        <a class="btn btn-sm-square btn-primary mx-1" href={`tel:${staff.data.phone}`}>
+                                            <i class="fas fa-phone"></i>
+                                        </a>
+                                    )}
+                                    <a class="btn btn-sm-square btn-primary mx-1" href={`/staff/${staff.slug}`}>
+                                        <i class="fas fa-user"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="text-center p-4">
+                                <h5 class="mb-0">{staff.data.name}</h5>
+                                <small class="text-primary">{staff.data.position}</small>
+                                <div class="mt-2">
+                                    <span class="badge bg-secondary">{staff.data.department}</span>
+                                    {staff.data.is_featured && (
+                                        <span class="badge bg-warning ms-1">Featured</span>
+                                    )}
+                                </div>
+                                <p class="text-muted small mt-3">
+                                    {staff.data.bio.length > 100 
+                                        ? staff.data.bio.substring(0, 100) + '...' 
+                                        : staff.data.bio
+                                    }
+                                </p>
+                                <a href={`/staff/${staff.slug}`} class="btn btn-primary btn-sm mt-2">
+                                    View Profile
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+    <!-- Staff End -->
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
+                <h1 class="mb-5">What Parents Say!</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel position-relative">
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="/img/testimonial-1.jpg" style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">Mrs. Nomsa Mthembu</h5>
+                    <p>Parent - Grade 3</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">Tshikhuthula Primary has provided my daughter with an excellent foundation. The teachers are caring and dedicated, and I can see her confidence growing every day.</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="/img/testimonial-2.jpg" style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">Mr. Sipho Ndlovu</h5>
+                    <p>Parent - Grade 5</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">The school's commitment to quality education and character development is evident. My son loves coming to school and has made tremendous progress in all subjects.</p>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="border rounded-circle p-2 mx-auto mb-3" src="/img/testimonial-3.jpg" style="width: 80px; height: 80px;">
+                    <h5 class="mb-0">Mrs. Thandiwe Zulu</h5>
+                    <p>Parent - Grade 7</p>
+                    <div class="testimonial-text bg-light text-center p-4">
+                        <p class="mb-0">As my daughter prepares for high school, I'm confident that Tshikhuthula Primary has given her the strong academic foundation she needs to succeed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+</Layout>
+
+<style>
+    .team-item {
+        transition: transform 0.3s ease;
+    }
+    
+    .team-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .team-item img {
+        transition: transform 0.3s ease;
+    }
+    
+    .team-item:hover img {
+        transform: scale(1.1);
+    }
+    
+    .badge {
+        font-size: 0.75rem;
+    }
+    
+    .text-muted.small {
+        font-style: italic;
+        line-height: 1.4;
+    }
+    
+    .course-item {
+        transition: transform 0.3s ease;
+    }
+    
+    .course-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .course-item img {
+        transition: transform 0.3s ease;
+    }
+    
+    .course-item:hover img {
+        transform: scale(1.1);
+    }
+</style>
+
+<script>
+    // Initialize Owl Carousel
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof $ !== 'undefined' && typeof $.fn.owlCarousel === 'function') {
+            $('.header-carousel').owlCarousel({
+                autoplay: true,
+                smartSpeed: 1500,
+                items: 1,
+                dots: false,
+                loop: true,
+                nav: true,
+                navText: [
+                    '<i class="bi bi-chevron-left"></i>',
+                    '<i class="bi bi-chevron-right"></i>'
+                ]
+            });
+
+            $('.testimonial-carousel').owlCarousel({
+                autoplay: true,
+                smartSpeed: 1000,
+                center: true,
+                margin: 24,
+                dots: true,
+                loop: true,
+                nav: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    992: {
+                        items: 3
+                    }
+                }
+            });
+        }
+    });
+</script>

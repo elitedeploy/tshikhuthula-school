@@ -1,0 +1,214 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import FilterComponent from '../components/FilterComponent.astro';
+
+// Get all staff members
+const allStaff = await getCollection('staff');
+
+// Sort staff by position hierarchy
+const positionOrder = ['Principal', 'Deputy Principal', 'Head of Department', 'Senior Teacher', 'Teacher', 'Assistant Teacher', 'Administrator', 'Support Staff'];
+
+const sortedStaff = allStaff.sort((a, b) => {
+  const aIndex = positionOrder.indexOf(a.data.position);
+  const bIndex = positionOrder.indexOf(b.data.position);
+  
+  if (aIndex === -1 && bIndex === -1) return 0;
+  if (aIndex === -1) return 1;
+  if (bIndex === -1) return -1;
+  
+  return aIndex - bIndex;
+});
+
+// Get unique departments for filtering
+const departments = [...new Set(allStaff.map(staff => staff.data.department))];
+---
+
+<Layout title="Our Dedicated Staff - Tshikhuthula School">
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">Our Dedicated Staff</h1>
+                    <p class="lead text-white mb-4">Meet the Heroes Who Shape Your Child's Future</p>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Our Staff</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Mission Statement -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Our Commitment</h6>
+                    <h1 class="mb-4">Your Child's Success is Our Mission</h1>
+                    <p class="mb-4">At Tshikhuthula Primary School, our dedicated staff are more than educators – they are guardians of your child's future. Each member of our team brings passion, expertise, and genuine care to ensure every student feels safe, valued, and inspired to reach their full potential.</p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Qualified & Experienced</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Individual Attention</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Safe Learning Environment</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Continuous Support</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" src="/img/about.jpg" alt="Our caring staff with students" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Staff Section -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Our Team</h6>
+                <h1 class="mb-5">Meet Our Dedicated Staff</h1>
+                <p class="mb-5">Our passionate educators and support staff are committed to providing the best learning experience for every student.</p>
+            </div>
+            <!-- Department Filter Buttons -->
+            <FilterComponent 
+                items={sortedStaff}
+                filterKey="department"
+                filterOptions={departments}
+                allLabel="All Staff"
+                buttonClass="btn btn-outline-primary"
+                containerClass="text-center mb-5"
+                itemSelector=".staff-member"
+                itemDataAttribute="data-department"
+                filterType="class"
+            />
+
+            <!-- Staff Grid -->
+            <div class="row g-4">
+              {sortedStaff.map((staff) => (
+                <div class="col-lg-3 col-md-6 staff-member" data-department={staff.data.department}>
+                  <div class="team-item bg-light rounded overflow-hidden">
+                    <div class="overflow-hidden">
+                      <img class="img-fluid" src={staff.data.image} alt={staff.data.name} />
+                    </div>
+                    <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                      <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                        <a class="btn btn-sm-square btn-primary mx-1" href={`mailto:${staff.data.email}`}>
+                          <i class="far fa-envelope"></i>
+                        </a>
+                        {staff.data.phone && (
+                          <a class="btn btn-sm-square btn-primary mx-1" href={`tel:${staff.data.phone}`}>
+                            <i class="fas fa-phone"></i>
+                          </a>
+                        )}
+                        <a class="btn btn-sm-square btn-primary mx-1" href={`/staff/${staff.slug}`}>
+                          <i class="fas fa-user"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="text-center p-4">
+                      <h5 class="mb-0">{staff.data.name}</h5>
+                      <small class="text-primary">{staff.data.position}</small>
+                      <div class="mt-2">
+                        <span class="badge bg-secondary">{staff.data.department}</span>
+                        {staff.data.is_featured && (
+                          <span class="badge bg-warning ms-1">Featured</span>
+                        )}
+                      </div>
+                      <p class="text-muted small mt-3">
+                        {staff.data.bio.length > 100 
+                          ? staff.data.bio.substring(0, 100) + '...' 
+                          : staff.data.bio
+                        }
+                      </p>
+                      <a href={`/staff/${staff.slug}`} class="btn btn-primary btn-sm mt-2">
+                        View Profile
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+        </div>
+    </div>
+    <!-- Staff Section End -->
+
+    <!-- Call to Action -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="bg-light rounded p-5">
+                <div class="row g-4 justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h6 class="section-title bg-light text-center text-primary px-3">Meet Our Team</h6>
+                        <h1 class="mb-4">Ready to Meet Our Caring Staff?</h1>
+                        <p class="mb-4">We'd love to introduce you and your child to our dedicated team. Schedule a school tour or meet-and-greet session to see firsthand how our staff creates a nurturing environment where every child can thrive.</p>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <a class="btn btn-primary py-3 px-5" href="/contact">Schedule a Visit</a>
+                            </div>
+                            <div class="col-sm-6">
+                                <a class="btn btn-outline-primary py-3 px-5" href="/application">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Call to Action End -->
+
+</Layout>
+
+<style>
+    .team-item {
+        transition: transform 0.3s ease;
+    }
+    
+    .team-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .team-item img {
+        transition: transform 0.3s ease;
+    }
+    
+    .team-item:hover img {
+        transform: scale(1.1);
+    }
+    
+    .badge {
+        font-size: 0.75rem;
+    }
+    
+    .text-muted.small {
+        font-style: italic;
+        line-height: 1.4;
+    }
+    
+    .btn-group .btn {
+        margin: 0 2px;
+    }
+    
+    .staff-member {
+        transition: opacity 0.3s ease;
+    }
+    
+    .staff-member.hidden {
+        display: none;
+    }
+</style>

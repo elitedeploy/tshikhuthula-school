@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "title": "Provincial Mathematics Olympiad Winner",
+    "description": "Grade 7 learner Thabo Mthembu won first place in the Gauteng Provincial Mathematics Olympiad, competing against over 500 students from across the province.",
+    "date": "2024-07-15",
+    "category": "Academic",
+    "student_name": "Thabo Mthembu",
+    "grade": "Grade 7",
+    "image": "/img/course-1.jpg",
+    "is_featured": true,
+    "award_level": "Provincial"
+  },
+  {
+    "id": 2,
+    "title": "Best Primary School Environmental Project",
+    "description": "Our school's recycling and vegetable garden project won the regional award for Best Environmental Initiative, earning recognition from the Department of Education.",
+    "date": "2024-06-20",
+    "category": "Environmental",
+    "student_name": "Environmental Club",
+    "grade": "All Grades",
+    "image": "/img/course-2.jpg",
+    "is_featured": true,
+    "award_level": "Regional"
+  },
+  {
+    "id": 3,
+    "title": "District Science Fair Champions",
+    "description": "Grade 6 students Nomsa Dlamini and Peter Botha's volcano project won first place at the District Science Fair, advancing to provincial competition.",
+    "date": "2024-05-10",
+    "category": "Science",
+    "student_name": "Nomsa Dlamini & Peter Botha",
+    "grade": "Grade 6",
+    "image": "/img/course-3.jpg",
+    "is_featured": false,
+    "award_level": "District"
+  },
+  {
+    "id": 4,
+    "title": "Outstanding Community Service Award",
+    "description": "Our Grade 7 class received recognition for their outstanding community service, including reading programs at local clinics and elderly care facilities.",
+    "date": "2024-04-25",
+    "category": "Community Service",
+    "student_name": "Grade 7 Class",
+    "grade": "Grade 7",
+    "image": "/img/about.jpg",
+    "is_featured": true,
+    "award_level": "Municipal"
+  },
+  {
+    "id": 5,
+    "title": "Inter-School Debate Championship",
+    "description": "Our debate team consisting of Lerato Molefe, David Chen, and Sarah Ndaba won the annual inter-school debate championship for the third consecutive year.",
+    "date": "2024-03-18",
+    "category": "Debate",
+    "student_name": "Lerato Molefe, David Chen, Sarah Ndaba",
+    "grade": "Grade 6-7",
+    "image": "/img/carousel-1.jpg",
+    "is_featured": false,
+    "award_level": "Regional"
+  },
+  {
+    "id": 6,
+    "title": "Cultural Heritage Art Competition",
+    "description": "Grade 5 student Amahle Zulu's traditional beadwork artwork won first place in the provincial cultural heritage art competition.",
+    "date": "2024-09-24",
+    "category": "Arts",
+    "student_name": "Amahle Zulu",
+    "grade": "Grade 5",
+    "image": "/img/carousel-2.jpg",
+    "is_featured": false,
+    "award_level": "Provincial"
+  },
+  {
+    "id": 7,
+    "title": "School Choir Provincial Competition",
+    "description": "Our school choir achieved second place in the Gauteng Provincial School Choir Competition, performing traditional and contemporary South African songs.",
+    "date": "2024-08-12",
+    "category": "Music",
+    "student_name": "School Choir",
+    "grade": "Grade 4-7",
+    "image": "/img/course-1.jpg",
+    "is_featured": true,
+    "award_level": "Provincial"
+  },
+  {
+    "id": 8,
+    "title": "Young Entrepreneur Award",
+    "description": "Grade 6 student Mpho Kgomo's school tuck shop business plan won the Young Entrepreneur Award at the district level competition.",
+    "date": "2024-02-14",
+    "category": "Entrepreneurship",
+    "student_name": "Mpho Kgomo",
+    "grade": "Grade 6",
+    "image": "/img/course-2.jpg",
+    "is_featured": false,
+    "award_level": "District"
+  }
+]

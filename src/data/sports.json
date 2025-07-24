@@ -1,0 +1,154 @@
+[
+  {
+    "id": 1,
+    "name": "Soccer (Football)",
+    "description": "Our most popular sport with teams for different age groups, competing in local and regional tournaments.",
+    "category": "Team Sports",
+    "age_groups": ["Under 10", "Under 12", "Under 14"],
+    "season": "Year-round",
+    "coach": "Coach James Williams",
+    "achievements": [
+      "District Champions 2023",
+      "Regional Semi-finalists 2024",
+      "Fair Play Award 2023"
+    ],
+    "training_schedule": "Tuesdays and Thursdays 3:30-5:00 PM",
+    "equipment_provided": true,
+    "image": "/img/cat-1.jpg",
+    "is_featured": true,
+    "participants": 45
+  },
+  {
+    "id": 2,
+    "name": "Netball",
+    "description": "Competitive netball program developing teamwork, coordination, and strategic thinking among our female athletes.",
+    "category": "Team Sports",
+    "age_groups": ["Under 11", "Under 13"],
+    "season": "March - September",
+    "coach": "Ms. Jennifer Adams",
+    "achievements": [
+      "Regional Runners-up 2024",
+      "Best Sportsmanship Award 2023",
+      "District Champions 2022"
+    ],
+    "training_schedule": "Mondays and Wednesdays 3:30-5:00 PM",
+    "equipment_provided": true,
+    "image": "/img/cat-2.jpg",
+    "is_featured": true,
+    "participants": 28
+  },
+  {
+    "id": 3,
+    "name": "Athletics (Track & Field)",
+    "description": "Individual and team athletics program covering running, jumping, and throwing events for all skill levels.",
+    "category": "Individual Sports",
+    "age_groups": ["Under 9", "Under 11", "Under 13"],
+    "season": "February - October",
+    "coach": "Mr. Sipho Ndaba",
+    "achievements": [
+      "3 Provincial qualifiers 2024",
+      "District record holder - 100m sprint",
+      "Regional Champions - Relay team"
+    ],
+    "training_schedule": "Daily 3:30-4:30 PM",
+    "equipment_provided": true,
+    "image": "/img/cat-3.jpg",
+    "is_featured": true,
+    "participants": 52
+  },
+  {
+    "id": 4,
+    "name": "Basketball",
+    "description": "Fast-paced basketball program focusing on skill development, teamwork, and competitive play.",
+    "category": "Team Sports",
+    "age_groups": ["Under 12", "Under 14"],
+    "season": "Year-round",
+    "coach": "Mr. Alex Chen",
+    "achievements": [
+      "District 3rd place 2024",
+      "Most Improved Team 2023",
+      "Regional participation 2024"
+    ],
+    "training_schedule": "Fridays 3:30-5:00 PM, Saturdays 9:00-11:00 AM",
+    "equipment_provided": true,
+    "image": "/img/course-1.jpg",
+    "is_featured": false,
+    "participants": 24
+  },
+  {
+    "id": 5,
+    "name": "Swimming",
+    "description": "Swimming program utilizing community pool facilities, focusing on water safety and competitive swimming.",
+    "category": "Individual Sports",
+    "age_groups": ["All ages"],
+    "season": "October - March",
+    "coach": "Ms. Sarah Johnson",
+    "achievements": [
+      "2 Regional qualifiers 2024",
+      "Water safety certification program",
+      "Inter-school gala participation"
+    ],
+    "training_schedule": "Saturdays 8:00-10:00 AM at Community Pool",
+    "equipment_provided": false,
+    "image": "/img/course-2.jpg",
+    "is_featured": false,
+    "participants": 18
+  },
+  {
+    "id": 6,
+    "name": "Traditional Games",
+    "description": "Cultural sports program featuring traditional South African games and activities, preserving heritage through sport.",
+    "category": "Cultural Sports",
+    "age_groups": ["All ages"],
+    "season": "Year-round",
+    "coach": "Ms. Nomsa Dlamini",
+    "achievements": [
+      "Cultural Heritage Award 2024",
+      "Community demonstration events",
+      "Intergenerational sports day"
+    ],
+    "training_schedule": "Thursdays 3:30-4:30 PM",
+    "equipment_provided": true,
+    "image": "/img/cat-4.jpg",
+    "is_featured": true,
+    "participants": 35
+  },
+  {
+    "id": 7,
+    "name": "Chess Club",
+    "description": "Strategic thinking development through competitive chess, participating in local and regional tournaments.",
+    "category": "Mind Sports",
+    "age_groups": ["Grade 3-7"],
+    "season": "Year-round",
+    "coach": "Mr. David Thompson",
+    "achievements": [
+      "District Chess Champions 2024",
+      "3 Provincial qualifiers",
+      "School Chess Tournament winners"
+    ],
+    "training_schedule": "Wednesdays 3:30-4:30 PM",
+    "equipment_provided": true,
+    "image": "/img/course-3.jpg",
+    "is_featured": false,
+    "participants": 22
+  },
+  {
+    "id": 8,
+    "name": "Cross Country Running",
+    "description": "Endurance running program building fitness, determination, and competitive spirit across various distances.",
+    "category": "Individual Sports",
+    "age_groups": ["Under 10", "Under 12", "Under 14"],
+    "season": "April - August",
+    "coach": "Ms. Priya Patel",
+    "achievements": [
+      "Regional top 10 finishers",
+      "District team champions 2023",
+      "Provincial participation"
+    ],
+    "training_schedule": "Tuesdays and Thursdays 6:30-7:30 AM",
+    "equipment_provided": false,
+    "image": "/img/about.jpg",
+    "is_featured": false,
+    "participants": 31
+  }
+]

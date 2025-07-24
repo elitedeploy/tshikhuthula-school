@@ -1,0 +1,39 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#grad1)"/>
+  
+  <!-- Book Icon -->
+  <g transform="translate(150, 80)">
+    <!-- Book Base -->
+    <rect x="0" y="40" width="100" height="80" fill="#ffffff" opacity="0.9" rx="4"/>
+    <rect x="5" y="35" width="100" height="80" fill="#ffffff" opacity="0.7" rx="4"/>
+    <rect x="10" y="30" width="100" height="80" fill="#ffffff" rx="4"/>
+    
+    <!-- Book Pages -->
+    <line x1="20" y1="50" x2="90" y2="50" stroke="#4f46e5" stroke-width="2" opacity="0.6"/>
+    <line x1="20" y1="65" x2="85" y2="65" stroke="#4f46e5" stroke-width="2" opacity="0.6"/>
+    <line x1="20" y1="80" x2="90" y2="80" stroke="#4f46e5" stroke-width="2" opacity="0.6"/>
+    <line x1="20" y1="95" x2="80" y2="95" stroke="#4f46e5" stroke-width="2" opacity="0.6"/>
+    
+    <!-- Bookmark -->
+    <rect x="85" y="30" width="8" height="25" fill="#fbbf24"/>
+    <polygon points="85,55 89,50 93,55" fill="#fbbf24"/>
+  </g>
+  
+  <!-- Academic Text -->
+  <text x="200" y="200" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Academic</text>
+  <text x="200" y="230" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" opacity="0.8">Subject</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="50" cy="50" r="3" fill="#ffffff" opacity="0.3"/>
+  <circle cx="350" cy="80" r="4" fill="#ffffff" opacity="0.2"/>
+  <circle cx="70" cy="250" r="2" fill="#ffffff" opacity="0.4"/>
+  <circle cx="330" cy="220" r="3" fill="#ffffff" opacity="0.3"/>
+</svg>

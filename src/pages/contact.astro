@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact Us - Tshikhuthula Primary School" description="Get in touch with Tshikhuthula Primary School for admissions inquiries, school visits, or general information.">
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">Contact</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Contact Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Contact Us</h6>
+                <h1 class="mb-5">Get In Touch With Our School</h1>
+                <p class="mb-5">We're here to help with admissions inquiries, school visits, or any questions about our educational programs.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h5>School Information</h5>
+                    <p class="mb-4">We welcome visitors and encourage parents to schedule a school tour to see our facilities and meet our dedicated staff. Our admissions team is available to answer all your questions.</p>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                            <i class="fa fa-map-marker-alt text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary">School Address</h5>
+                            <p class="mb-0">Tshikhuthula Village<br>Limpopo Province, South Africa</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                            <i class="fa fa-phone-alt text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary">Phone</h5>
+                            <p class="mb-0">+27 15 123 4567</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                            <i class="fa fa-envelope-open text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary">Email</h5>
+                            <p class="mb-0">admissions@tshikhuthula.edu.za</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center justify-content-center flex-shrink-0 bg-primary" style="width: 50px; height: 50px;">
+                            <i class="fa fa-clock text-white"></i>
+                        </div>
+                        <div class="ms-3">
+                            <h5 class="text-primary">Office Hours</h5>
+                            <p class="mb-0">Monday - Friday<br>7:30 AM - 3:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="bg-light rounded p-4 h-100">
+                        <h5 class="mb-4">Visit Our School</h5>
+                        <p class="mb-3">We encourage prospective families to visit our campus and experience our welcoming learning environment firsthand.</p>
+                        <div class="mb-3">
+                            <h6 class="text-primary">School Tours Available:</h6>
+                            <p class="mb-1">• Monday - Friday: 9:00 AM - 11:00 AM</p>
+                            <p class="mb-1">• By appointment only</p>
+                            <p class="mb-3">• Please call ahead to schedule</p>
+                        </div>
+                        <div class="mb-3">
+                            <h6 class="text-primary">What to Expect:</h6>
+                            <p class="mb-1">• Tour of classrooms and facilities</p>
+                            <p class="mb-1">• Meet with our principal</p>
+                            <p class="mb-1">• Q&A session about our programs</p>
+                            <p class="mb-3">• Information about admissions process</p>
+                        </div>
+                        <a href="/application" class="btn btn-primary w-100">Schedule a Visit</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                    <form id="contactForm">
+                        <h5 class="mb-4">Send Us a Message</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                                    <label for="name">Your Name *</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                                    <label for="email">Your Email *</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number">
+                                    <label for="phone">Phone Number</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <select class="form-select" id="inquiry-type" required>
+                                        <option value="">Select Inquiry Type</option>
+                                        <option value="admissions">Admissions Information</option>
+                                        <option value="school-tour">Schedule School Tour</option>
+                                        <option value="curriculum">Curriculum Questions</option>
+                                        <option value="fees">Fees and Financial Aid</option>
+                                        <option value="transport">Transport Services</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <label for="inquiry-type">Inquiry Type *</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 120px" required></textarea>
+                                    <label for="message">Message *</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <script>
+                        document.getElementById('contactForm').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            alert('Thank you for your message! We will get back to you within 24 hours.');
+                            this.reset();
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+
+
+</Layout>

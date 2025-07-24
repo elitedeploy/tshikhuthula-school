@@ -1,0 +1,582 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Apply Online - Tshikhuthula Primary School" description="Submit your application to Tshikhuthula Primary School online. Complete our comprehensive application form to begin your child's educational journey.">
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header py-5 mb-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">Apply Online</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="/admissions">Admissions</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Apply Online</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Application Form Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Join Our School</h6>
+                <h1 class="mb-5">Application Form</h1>
+                <p class="mb-5">Please complete all sections of this form. Required fields are marked with an asterisk (*).</p>
+            </div>
+            
+            <div class="row g-5">
+                <div class="col-lg-8 mx-auto">
+                    <form id="applicationForm" class="wow fadeInUp" data-wow-delay="0.3s">
+                        <!-- Student Information -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="mb-0"><i class="fa fa-user me-2"></i>Student Information</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="studentFirstName" class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="studentFirstName" name="studentFirstName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="studentLastName" class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="studentLastName" name="studentLastName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="studentDOB" class="form-label">Date of Birth *</label>
+                                        <input type="date" class="form-control" id="studentDOB" name="studentDOB" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="studentGender" class="form-label">Gender *</label>
+                                        <select class="form-select" id="studentGender" name="studentGender" required>
+                                            <option value="">Select Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="studentIDNumber" class="form-label">ID Number *</label>
+                                        <input type="text" class="form-control" id="studentIDNumber" name="studentIDNumber" placeholder="13-digit ID number" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="gradeApplying" class="form-label">Grade Applying For *</label>
+                                        <select class="form-select" id="gradeApplying" name="gradeApplying" required>
+                                            <option value="">Select Grade</option>
+                                            <option value="grade-r">Grade R</option>
+                                            <option value="grade-1">Grade 1</option>
+                                            <option value="grade-2">Grade 2</option>
+                                            <option value="grade-3">Grade 3</option>
+                                            <option value="grade-4">Grade 4</option>
+                                            <option value="grade-5">Grade 5</option>
+                                            <option value="grade-6">Grade 6</option>
+                                            <option value="grade-7">Grade 7</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="homeLanguage" class="form-label">Home Language *</label>
+                                        <select class="form-select" id="homeLanguage" name="homeLanguage" required>
+                                            <option value="">Select Language</option>
+                                            <option value="english">English</option>
+                                            <option value="tshivenda">Tshivenda</option>
+                                            <option value="xitsonga">Xitsonga</option>
+                                            <option value="sepedi">Sepedi</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="previousSchool" class="form-label">Previous School (if applicable)</label>
+                                        <input type="text" class="form-control" id="previousSchool" name="previousSchool">
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="medicalConditions" class="form-label">Medical Conditions or Allergies</label>
+                                        <textarea class="form-control" id="medicalConditions" name="medicalConditions" rows="3" placeholder="Please list any medical conditions, allergies, or special needs we should be aware of"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Parent/Guardian Information -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="mb-0"><i class="fa fa-users me-2"></i>Parent/Guardian Information</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="parentFirstName" class="form-label">Parent/Guardian First Name *</label>
+                                        <input type="text" class="form-control" id="parentFirstName" name="parentFirstName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="parentLastName" class="form-label">Parent/Guardian Last Name *</label>
+                                        <input type="text" class="form-control" id="parentLastName" name="parentLastName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="parentIDNumber" class="form-label">ID Number *</label>
+                                        <input type="text" class="form-control" id="parentIDNumber" name="parentIDNumber" placeholder="13-digit ID number" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="relationship" class="form-label">Relationship to Student *</label>
+                                        <select class="form-select" id="relationship" name="relationship" required>
+                                            <option value="">Select Relationship</option>
+                                            <option value="mother">Mother</option>
+                                            <option value="father">Father</option>
+                                            <option value="guardian">Guardian</option>
+                                            <option value="grandparent">Grandparent</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="parentPhone" class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-control" id="parentPhone" name="parentPhone" placeholder="e.g., 082 123 4567" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="parentEmail" class="form-label">Email Address *</label>
+                                        <input type="email" class="form-control" id="parentEmail" name="parentEmail" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="occupation" class="form-label">Occupation</label>
+                                        <input type="text" class="form-control" id="occupation" name="occupation">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="employer" class="form-label">Employer</label>
+                                        <input type="text" class="form-control" id="employer" name="employer">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Address Information -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="mb-0"><i class="fa fa-home me-2"></i>Address Information</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label for="streetAddress" class="form-label">Street Address *</label>
+                                        <input type="text" class="form-control" id="streetAddress" name="streetAddress" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="suburb" class="form-label">Suburb/Township *</label>
+                                        <input type="text" class="form-control" id="suburb" name="suburb" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="city" class="form-label">City *</label>
+                                        <input type="text" class="form-control" id="city" name="city" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="province" class="form-label">Province *</label>
+                                        <select class="form-select" id="province" name="province" required>
+                                            <option value="">Select Province</option>
+                                            <option value="limpopo">Limpopo</option>
+                                            <option value="gauteng">Gauteng</option>
+                                            <option value="mpumalanga">Mpumalanga</option>
+                                            <option value="kwazulu-natal">KwaZulu-Natal</option>
+                                            <option value="western-cape">Western Cape</option>
+                                            <option value="eastern-cape">Eastern Cape</option>
+                                            <option value="northern-cape">Northern Cape</option>
+                                            <option value="free-state">Free State</option>
+                                            <option value="north-west">North West</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="postalCode" class="form-label">Postal Code *</label>
+                                        <input type="text" class="form-control" id="postalCode" name="postalCode" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Emergency Contact -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="mb-0"><i class="fa fa-phone me-2"></i>Emergency Contact</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="emergencyName" class="form-label">Emergency Contact Name *</label>
+                                        <input type="text" class="form-control" id="emergencyName" name="emergencyName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="emergencyRelationship" class="form-label">Relationship *</label>
+                                        <input type="text" class="form-control" id="emergencyRelationship" name="emergencyRelationship" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="emergencyPhone" class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-control" id="emergencyPhone" name="emergencyPhone" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="emergencyEmail" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="emergencyEmail" name="emergencyEmail">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Document Upload -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="mb-0"><i class="fa fa-upload me-2"></i>Required Documents</h4>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted mb-3">Please upload the following required documents (PDF format only, max 5MB each):</p>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label for="birthCertificate" class="form-label">Birth Certificate *</label>
+                                        <input type="file" class="form-control" id="birthCertificate" name="birthCertificate" accept=".pdf" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="parentID" class="form-label">Parent/Guardian ID *</label>
+                                        <input type="file" class="form-control" id="parentID" name="parentID" accept=".pdf" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="proofOfResidence" class="form-label">Proof of Residence *</label>
+                                        <input type="file" class="form-control" id="proofOfResidence" name="proofOfResidence" accept=".pdf" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="immunizationRecord" class="form-label">Immunization Records *</label>
+                                        <input type="file" class="form-control" id="immunizationRecord" name="immunizationRecord" accept=".pdf" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="previousReports" class="form-label">Previous School Reports</label>
+                                        <input type="file" class="form-control" id="previousReports" name="previousReports" accept=".pdf">
+                                        <small class="text-muted">Only required if student attended another school</small>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="studentPhoto" class="form-label">Student Photograph</label>
+                                        <input type="file" class="form-control" id="studentPhoto" name="studentPhoto" accept=".jpg,.jpeg,.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Information -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="mb-0"><i class="fa fa-info-circle me-2"></i>Additional Information</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="transportRequired" name="transportRequired">
+                                            <label class="form-check-label" for="transportRequired">
+                                                I require school transport services (+R800/month)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="afterCareRequired" name="afterCareRequired">
+                                            <label class="form-check-label" for="afterCareRequired">
+                                                I require after-care services (until 5:00 PM)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="financialAssistance" name="financialAssistance">
+                                            <label class="form-check-label" for="financialAssistance">
+                                                I would like to be considered for financial assistance
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="additionalInfo" class="form-label">Additional Information</label>
+                                        <textarea class="form-control" id="additionalInfo" name="additionalInfo" rows="4" placeholder="Please share any additional information about your child that would help us provide the best educational experience"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="card mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h4 class="mb-0"><i class="fa fa-file-contract me-2"></i>Terms and Conditions</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                                    <label class="form-check-label" for="agreeTerms">
+                                        I agree to the school's terms and conditions, policies, and code of conduct *
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="agreePrivacy" name="agreePrivacy" required>
+                                    <label class="form-check-label" for="agreePrivacy">
+                                        I consent to the collection and processing of personal information as outlined in the privacy policy *
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="agreeMarketing" name="agreeMarketing">
+                                    <label class="form-check-label" for="agreeMarketing">
+                                        I agree to receive updates and communications from the school
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary py-3 px-5">
+                                <i class="fa fa-paper-plane me-2"></i>Submit Application
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Application Form End -->
+
+    <!-- Success/Error Messages -->
+    <div id="successMessage" class="alert alert-success d-none" role="alert">
+        <h4 class="alert-heading">Application Submitted Successfully!</h4>
+        <p>Thank you for your application. We have received your information and will review it within 3-5 business days. You will receive a confirmation email shortly.</p>
+    </div>
+
+    <div id="errorMessage" class="alert alert-danger d-none" role="alert">
+        <h4 class="alert-heading">Submission Error</h4>
+        <p>There was an error submitting your application. Please check all required fields and try again.</p>
+    </div>
+
+    <script>
+        document.getElementById('applicationForm')?.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]') as HTMLButtonElement;
+            if (!submitBtn) return;
+            
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin me-2"></i>Submitting...';
+            submitBtn.disabled = true;
+            
+            // Basic form validation
+            const requiredFields = this.querySelectorAll('[required]');
+            let isValid = true;
+            let firstInvalidField: HTMLElement | null = null;
+            
+            requiredFields.forEach(field => {
+                const inputField = field as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+                if (!inputField.value.trim()) {
+                    field.classList.add('is-invalid');
+                    if (!firstInvalidField) firstInvalidField = field as HTMLElement;
+                    isValid = false;
+                } else {
+                    field.classList.remove('is-invalid');
+                }
+            });
+            
+            if (!isValid) {
+                const errorMsg = document.getElementById('errorMessage');
+                const successMsg = document.getElementById('successMessage');
+                
+                if (errorMsg) {
+                    errorMsg.innerHTML = `
+                        <h4 class="alert-heading">Please Complete Required Fields</h4>
+                        <p>Please fill in all required fields marked with an asterisk (*) before submitting your application.</p>
+                    `;
+                    errorMsg.classList.remove('d-none');
+                }
+                
+                if (successMsg) {
+                    successMsg.classList.add('d-none');
+                }
+                
+                // Scroll to first invalid field
+                if (firstInvalidField) {
+                    (firstInvalidField as HTMLElement).scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    const focusableElement = firstInvalidField as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
+                    if (focusableElement && typeof focusableElement.focus === 'function') {
+                        focusableElement.focus();
+                    }
+                }
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                return;
+            }
+            
+            // For static site - simulate submission and show success
+            try {
+                // Simulate API delay
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // Generate application ID
+                const applicationId = 'TSH' + Date.now().toString().slice(-6);
+                
+                // Show success message
+                const successMsg = document.getElementById('successMessage');
+                const errorMsg = document.getElementById('errorMessage');
+                
+                if (successMsg) {
+                    successMsg.innerHTML = `
+                        <h4 class="alert-heading">Application Submitted Successfully!</h4>
+                        <p><strong>Application ID:</strong> ${applicationId}</p>
+                        <p>Thank you for your application. We have received your information and will review it within 3-5 business days.</p>
+                        <p><strong>Next Steps:</strong></p>
+                        <ul>
+                            <li>You will receive a confirmation email within 24 hours</li>
+                            <li>Our admissions team will contact you to schedule an interview</li>
+                            <li>Please save your Application ID for future reference</li>
+                        </ul>
+                        <hr>
+                        <p class="mb-0"><strong>Contact:</strong> For questions, call +27 11 123 4567 or email admissions@tshikhuthula.edu</p>
+                    `;
+                    successMsg.classList.remove('d-none');
+                }
+                
+                if (errorMsg) {
+                    errorMsg.classList.add('d-none');
+                }
+                
+                // Scroll to success message
+                if (successMsg) {
+                    successMsg.scrollIntoView({ behavior: 'smooth' });
+                }
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    (this as HTMLFormElement).reset();
+                    // Clear file info displays
+                    document.querySelectorAll('.file-info').forEach(info => info.remove());
+                }, 3000);
+                
+            } catch (error) {
+                console.error('Submission error:', error);
+                
+                // Show error message
+                const errorMsg = document.getElementById('errorMessage');
+                const successMsg = document.getElementById('successMessage');
+                
+                if (errorMsg) {
+                    errorMsg.innerHTML = `
+                        <h4 class="alert-heading">Submission Error</h4>
+                        <p>We're sorry, but there was a technical issue submitting your application.</p>
+                        <p><strong>Please try one of the following:</strong></p>
+                        <ul>
+                            <li>Wait a moment and try submitting again</li>
+                            <li>Check your internet connection</li>
+                            <li>Contact us directly at +27 11 123 4567</li>
+                            <li>Email your application to admissions@tshikhuthula.edu</li>
+                        </ul>
+                    `;
+                    errorMsg.classList.remove('d-none');
+                    
+                    // Scroll to error message
+                    errorMsg.scrollIntoView({ behavior: 'smooth' });
+                }
+                
+                if (successMsg) {
+                    successMsg.classList.add('d-none');
+                }
+            } finally {
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // File validation
+        document.querySelectorAll('input[type="file"]').forEach((input) => {
+            const fileInput = input as HTMLInputElement;
+            
+            // Helper functions for file validation
+            const showFileError = (message: string) => {
+                const fileInfo = document.createElement('small');
+                fileInfo.className = 'file-info text-danger d-block mt-1';
+                fileInfo.innerHTML = `<i class="fa fa-exclamation-circle me-1"></i>${message}`;
+                if (fileInput.parentElement) {
+                    fileInput.parentElement.appendChild(fileInfo);
+                }
+                fileInput.classList.add('is-invalid');
+            };
+            
+            const showFileSuccess = (file: File) => {
+                const fileInfo = document.createElement('small');
+                fileInfo.className = 'file-info text-success d-block mt-1';
+                fileInfo.innerHTML = `<i class="fa fa-check-circle me-1"></i>Selected: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+                if (fileInput.parentElement) {
+                    fileInput.parentElement.appendChild(fileInfo);
+                }
+                fileInput.classList.remove('is-invalid');
+            };
+            
+            fileInput.addEventListener('change', function() {
+                const file = this.files?.[0];
+                
+                // Remove existing file info
+                const existingInfo = this.parentElement?.querySelector('.file-info');
+                if (existingInfo) existingInfo.remove();
+                
+                if (!file) return;
+                
+                // File size validation (5MB limit)
+                if (file.size > 5 * 1024 * 1024) {
+                    showFileError('File size must be less than 5MB. Please choose a smaller file.');
+                    this.value = '';
+                    return;
+                }
+                
+                // File type validation
+                const allowedTypes: Record<string, string[]> = {
+                    'birthCertificate': ['application/pdf'],
+                    'parentID': ['application/pdf'],
+                    'proofOfResidence': ['application/pdf'],
+                    'immunizationRecord': ['application/pdf'],
+                    'previousReports': ['application/pdf'],
+                    'studentPhoto': ['image/jpeg', 'image/jpg', 'image/png']
+                };
+                
+                const fieldName = this.name;
+                const allowedTypesForField = allowedTypes[fieldName];
+                
+                if (allowedTypesForField && !allowedTypesForField.includes(file.type)) {
+                    const expectedTypes = allowedTypesForField.map(type => {
+                        if (type === 'application/pdf') return 'PDF';
+                        if (type.startsWith('image/')) return type.split('/')[1].toUpperCase();
+                        return type;
+                    }).join(', ');
+                    
+                    const fieldLabel = this.parentElement?.querySelector('label')?.textContent || fieldName;
+                    showFileError(`Please upload a ${expectedTypes} file for ${fieldLabel}`);
+                    this.value = '';
+                    return;
+                }
+                
+                // Show file success info
+                showFileSuccess(file);
+            });
+        });
+        
+        // Format ID numbers (13 digits only)
+        document.querySelectorAll('input[name$="IDNumber"]').forEach((input) => {
+            const idInput = input as HTMLInputElement;
+            idInput.addEventListener('input', function() {
+                this.value = this.value.replace(/\D/g, '').substring(0, 13);
+            });
+        });
+        
+        // Format phone numbers
+        document.querySelectorAll('input[type="tel"]').forEach((input) => {
+            const phoneInput = input as HTMLInputElement;
+            phoneInput.addEventListener('input', function() {
+                let value = this.value.replace(/\D/g, '');
+                if (value.length >= 10) {
+                    value = value.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
+                }
+                this.value = value;
+            });
+        });
+    </script>
+</Layout>

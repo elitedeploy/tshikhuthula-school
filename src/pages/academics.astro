@@ -1,0 +1,265 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import FilterComponent from '../components/FilterComponent.astro';
+
+// Get all academic subjects
+const allAcademics = await getCollection('academics');
+
+// Sort academics by grade level and then by subject name
+const gradeOrder = ['Grade R', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7'];
+
+const sortedAcademics = allAcademics.sort((a, b) => {
+  const aGradeIndex = gradeOrder.indexOf(a.data.grade_level);
+  const bGradeIndex = gradeOrder.indexOf(b.data.grade_level);
+  
+  if (aGradeIndex !== bGradeIndex) {
+    return aGradeIndex - bGradeIndex;
+  }
+  
+  return a.data.subject.localeCompare(b.data.subject);
+});
+
+// Get unique grade levels for filtering
+const gradeLevels = [...new Set(allAcademics.map(academic => academic.data.grade_level))];
+
+// Function to get appropriate image for each subject
+function getSubjectImage(academic: any) {
+  const subject = academic.data.subject.toLowerCase();
+  
+  if (subject.includes('math') || subject.includes('numeracy')) {
+    return '/img/course-1.jpg';
+  } else if (subject.includes('english') || subject.includes('language') || subject.includes('literacy')) {
+    return '/img/course-2.jpg';
+  } else if (subject.includes('science') || subject.includes('natural')) {
+    return '/img/course-3.jpg';
+  } else if (subject.includes('social') || subject.includes('studies')) {
+    return '/img/about.jpg';
+  } else if (subject.includes('art') || subject.includes('creative')) {
+    return '/img/team-1.jpg';
+  } else if (subject.includes('physical') || subject.includes('sport')) {
+    return '/img/team-2.jpg';
+  } else {
+    return '/img/course-1.jpg'; // Default image
+  }
+}
+---
+
+<Layout title="Academic Programs - Tshikhuthula Primary School">
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">Academic Programs</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Academics</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Mission Statement Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" src="/img/academics/academics-mission.jpg" alt="Academic Excellence" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Our Curriculum</h6>
+                    <h1 class="mb-4">Excellence in South African Education</h1>
+                    <p class="mb-4">Our academic programs are designed according to the Curriculum and Assessment Policy Statement (CAPS), ensuring that every learner receives a comprehensive, quality education that prepares them for future success.</p>
+                    <p class="mb-4">We offer a balanced curriculum that develops critical thinking, creativity, and practical skills while maintaining strong foundations in core subjects. Our experienced educators use innovative teaching methods to make learning engaging and meaningful.</p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>CAPS-Aligned Curriculum</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Qualified Educators</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Multilingual Support</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Continuous Assessment</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Individual Support</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Modern Resources</p>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="/contact">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mission Statement End -->
+
+    <!-- Filter Section Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Browse Subjects</h6>
+                <h1 class="mb-5">Academic Subjects by Grade</h1>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <FilterComponent 
+                        items={sortedAcademics}
+                        filterKey="grade_level"
+                        filterOptions={gradeLevels}
+                        allLabel="All Subjects"
+                        buttonClass="btn btn-outline-primary m-1"
+                        containerClass="text-center"
+                        itemSelector=".academic-item"
+                        itemDataAttribute="data-grade"
+                        filterType="style"
+                    />
+                </div>
+            </div>
+
+            <!-- Academic Subjects Grid -->
+            <div class="row g-4">
+                {sortedAcademics.map((academic) => (
+                    <div class="col-lg-4 col-md-6 wow fadeInUp academic-item" data-wow-delay="0.1s" data-grade={academic.data.grade_level.toLowerCase().replace(' ', '-')}>
+                        <div class="course-item bg-light rounded overflow-hidden h-100">
+                            <div class="overflow-hidden">
+                                <img class="img-fluid w-100" src={getSubjectImage(academic)} alt={academic.data.subject} style="height: 250px; object-fit: cover;">
+                            </div>
+                            <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                                <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                                    <a class="btn btn-sm-square btn-primary mx-1" href={`/academics/${academic.id}`} title="View Details">
+                                        <i class="fas fa-book-open"></i>
+                                    </a>
+                                    <a class="btn btn-sm-square btn-primary mx-1" href="/contact" title="Enroll Now">
+                                        <i class="fas fa-user-plus"></i>
+                                    </a>
+                                    <a class="btn btn-sm-square btn-primary mx-1" href="/contact" title="Contact Us">
+                                        <i class="far fa-envelope"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="text-center p-4 pb-0">
+                                <h3 class="mb-2">{academic.data.subject}</h3>
+                                <div class="mb-3">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="text-muted ms-2">({academic.data.weekly_hours} hrs/week)</small>
+                                </div>
+                                <h5 class="text-primary mb-2">{academic.data.grade_level}</h5>
+                                <div class="mt-2 mb-3">
+                                    <span class="badge bg-primary">{academic.data.curriculum_framework}</span>
+                                    {academic.data.is_core_subject && (
+                                        <span class="badge bg-warning ms-1">Core Subject</span>
+                                    )}
+                                </div>
+                                <p class="text-muted small mb-3">
+                                    {academic.data.description.length > 120 
+                                        ? academic.data.description.substring(0, 120) + '...' 
+                                        : academic.data.description
+                                    }
+                                </p>
+                                <a href={`/academics/${academic.id}`} class="btn btn-primary btn-sm mt-2 mb-3">
+                                    Learn More
+                                </a>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>{academic.data.weekly_hours}h/week</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-graduation-cap text-primary me-2"></i>{academic.data.grade_level}</small>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>
+    <!-- Filter Section End -->
+
+    <!-- Call to Action Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="bg-primary rounded py-5 px-4">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <h6 class="text-white text-uppercase mb-3">Academic Excellence</h6>
+                        <h1 class="text-white mb-0">Ready to Join Our Learning Community?</h1>
+                    </div>
+                    <div class="col-lg-6 text-center text-lg-end">
+                        <a class="btn btn-outline-light py-3 px-5 me-3" href="/admissions">Apply Now</a>
+                        <a class="btn btn-light py-3 px-5" href="/contact">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Call to Action End -->
+</Layout>
+
+
+
+<style>
+    .filter-btn.active {
+        background-color: var(--bs-primary);
+        color: white;
+        border-color: var(--bs-primary);
+    }
+    
+    .academic-item {
+        transition: all 0.3s ease;
+    }
+    
+    .course-item {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #e9ecef;
+    }
+    
+    .course-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+    
+    .course-item img {
+        transition: transform 0.3s ease;
+    }
+    
+    .course-item:hover img {
+        transform: scale(1.05);
+    }
+    
+    .badge {
+        font-size: 0.75rem;
+    }
+    
+    .text-muted.small {
+        font-style: italic;
+        line-height: 1.4;
+    }
+    
+    .btn-sm-square {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .btn-sm-square:hover {
+        transform: scale(1.1);
+    }
+</style>

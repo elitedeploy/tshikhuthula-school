@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="mathRBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ab47bc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8e24aa;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#mathRBg)"/>
+  
+  <!-- Counting blocks -->
+  <rect x="80" y="120" width="20" height="20" fill="#f44336"/>
+  <rect x="105" y="120" width="20" height="20" fill="#2196f3"/>
+  <rect x="130" y="120" width="20" height="20" fill="#4caf50"/>
+  <rect x="155" y="120" width="20" height="20" fill="#ffeb3b"/>
+  <rect x="180" y="120" width="20" height="20" fill="#ff9800"/>
+  
+  <!-- Numbers 1-5 -->
+  <text x="90" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+  <text x="115" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
+  <text x="140" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">3</text>
+  <text x="165" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">4</text>
+  <text x="190" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">5</text>
+  
+  <!-- Basic shapes -->
+  <circle cx="300" cy="80" r="20" fill="#e91e63" opacity="0.8"/>
+  <rect x="280" y="120" width="40" height="40" fill="#3f51b5" opacity="0.8"/>
+  <polygon points="300,180 320,220 280,220" fill="#009688" opacity="0.8"/>
+  
+  <!-- Shape labels -->
+  <text x="300" y="250" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Circle</text>
+  <text x="300" y="175" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Square</text>
+  <text x="300" y="235" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Triangle</text>
+  
+  <!-- Counting objects -->
+  <circle cx="50" cy="180" r="8" fill="#ffeb3b"/>
+  <circle cx="70" cy="180" r="8" fill="#ffeb3b"/>
+  <circle cx="90" cy="180" r="8" fill="#ffeb3b"/>
+  <text x="70" y="210" font-family="Arial, sans-serif" font-size="16" fill="#fff" text-anchor="middle">3</text>
+  
+  <!-- Pattern blocks -->
+  <rect x="120" y="200" width="15" height="15" fill="#f44336"/>
+  <circle cx="145" cy="207" r="7" fill="#2196f3"/>
+  <rect x="160" y="200" width="15" height="15" fill="#f44336"/>
+  <circle cx="185" cy="207" r="7" fill="#2196f3"/>
+  <text x="152" y="235" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Pattern</text>
+  
+  <!-- Big and small comparison -->
+  <circle cx="60" cy="60" r="15" fill="#4caf50" opacity="0.8"/>
+  <circle cx="90" cy="60" r="8" fill="#4caf50" opacity="0.8"/>
+  <text x="75" y="40" font-family="Arial, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Big & Small</text>
+  
+  <!-- Playful elements -->
+  <text x="350" y="180" font-family="Arial, sans-serif" font-size="24" fill="#fff">🎲</text>
+  <text x="30" y="250" font-family="Arial, sans-serif" font-size="20" fill="#fff">🧮</text>
+  
+  <!-- Title -->
+  <text x="200" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#fff">Mathematics Grade R</text>
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#fff">Numbers, Shapes & Patterns</text>
+</svg>

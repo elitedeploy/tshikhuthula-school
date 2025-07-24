@@ -1,0 +1,268 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+// Get all events from the content collection
+const events = await getCollection('events');
+
+// Sort events by date (upcoming first)
+const sortedEvents = events.sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+
+// Function to check if event is upcoming
+const isUpcoming = (eventDate: string) => {
+  return new Date(eventDate) >= new Date();
+};
+---
+
+<Layout title="Events & Calendar - School Events">
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">Events & Calendar</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Events</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+  <main class="min-h-screen bg-gray-50">
+
+    <!-- Events Content -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="events-grid">
+          <div class="container">
+            <div class="row">
+              {sortedEvents.map((event) => (
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class={`event-card ${isUpcoming(event.data.date) ? 'upcoming' : 'past'}`}>
+                    {event.data.image && (
+                      <div class="event-image">
+                        <img src={event.data.image} alt={event.data.title} class="img-fluid" />
+                        <div class="event-category">{event.data.category}</div>
+                        {isUpcoming(event.data.date) && (
+                          <div class="event-status">Upcoming</div>
+                        )}
+                      </div>
+                    )}
+                    <div class="event-content">
+                      <div class="event-date">
+                        <div class="date-box">
+                          <span class="day">
+                            {new Date(event.data.date).getDate()}
+                          </span>
+                          <span class="month">
+                            {new Date(event.data.date).toLocaleDateString('en-US', { month: 'short' })}
+                          </span>
+                        </div>
+                        <div class="event-time">
+                          <i class="fas fa-clock"></i>
+                          {event.data.time}
+                        </div>
+                      </div>
+                      <h4 class="event-title">{event.data.title}</h4>
+                      <p class="event-description">
+                        {event.data.description.length > 120 
+                          ? event.data.description.substring(0, 120) + '...' 
+                          : event.data.description
+                        }
+                      </p>
+                      {event.data.location && (
+                        <div class="event-location">
+                          <i class="fas fa-map-marker-alt"></i>
+                          {event.data.location}
+                        </div>
+                      )}
+                      {event.data.registration_required && (
+                        <div class="event-registration">
+                          <i class="fas fa-user-plus"></i>
+                          Registration Required
+                        </div>
+                      )}
+                      <div class="event-actions">
+                        <a href={`/events/${event.slug}`} class="btn btn-primary btn-sm">
+                          Learn More
+                        </a>
+                        {isUpcoming(event.data.date) && event.data.registration_required && (
+                          <a href="/contact" class="btn btn-outline-primary btn-sm">
+                            Register
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+.events-grid {
+  padding: 60px 0;
+}
+
+.event-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.event-card.past {
+  opacity: 0.7;
+}
+
+.event-image {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover .event-image img {
+  transform: scale(1.05);
+}
+
+.event-category {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #3498db;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.event-status {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #27ae60;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.event-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-date {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.date-box {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  margin-right: 15px;
+  min-width: 60px;
+}
+
+.date-box .day {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  line-height: 1;
+}
+
+.date-box .month {
+  display: block;
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  text-transform: uppercase;
+}
+
+.event-time {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.event-time i {
+  margin-right: 5px;
+}
+
+.event-title {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.event-description {
+  color: #7f8c8d;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+.event-location, .event-registration {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.event-location i, .event-registration i {
+  margin-right: 8px;
+  color: #3498db;
+}
+
+.event-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.event-actions .btn {
+  flex: 1;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .event-actions {
+    flex-direction: column;
+  }
+}
+</style>

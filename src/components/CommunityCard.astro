@@ -1,0 +1,175 @@
+---
+import { generateSlug } from '../utils/slug';
+
+export interface Props {
+  initiative: {
+    id: number;
+    name: string;
+    description: string;
+    category: string;
+    target_beneficiaries: string;
+    frequency: string;
+    participants: number;
+    coordinator: string;
+    impact: {
+      students_helped?: number;
+      reading_improvement?: string;
+      community_reach?: string;
+      families_served?: number;
+      vegetables_produced?: string;
+      residents_visited?: number;
+      facilities_served?: number;
+      areas_cleaned?: string;
+      waste_collected?: string;
+      adults_trained?: number;
+      skills_acquired?: string;
+      people_reached?: number;
+      health_screenings?: string;
+      stories_documented?: number;
+      elders_interviewed?: number;
+      businesses_started?: number;
+      students_mentored?: number;
+    };
+    image: string;
+    is_featured: boolean;
+    year_started: number;
+    partnerships: string[];
+  };
+  showDetails?: boolean;
+}
+
+const { initiative, showDetails = false } = Astro.props;
+---
+
+<div class="community-card h-100">
+  <div class="card h-100 shadow-sm">
+    <div class="position-relative overflow-hidden">
+      <img 
+        src={initiative.image} 
+        alt={initiative.name} 
+        class="card-img-top" 
+        style="height: 200px; object-fit: cover;"
+      />
+      <div class="position-absolute top-0 end-0 m-2">
+        <span class={`badge ${initiative.is_featured ? 'bg-warning' : 'bg-secondary'}`}>
+          {initiative.category}
+        </span>
+      </div>
+      {initiative.is_featured && (
+        <div class="position-absolute top-0 start-0 m-2">
+          <span class="badge bg-primary">
+            <i class="fas fa-heart me-1"></i>Featured
+          </span>
+        </div>
+      )}
+    </div>
+    
+    <div class="card-body d-flex flex-column">
+      <div class="d-flex justify-content-between align-items-start mb-2">
+        <h5 class="card-title mb-0">{initiative.name}</h5>
+        <small class="text-muted">Since {initiative.year_started}</small>
+      </div>
+      
+      <div class="mb-2">
+        <span class="badge bg-light text-dark me-2">
+          <i class="fas fa-users me-1"></i>{initiative.participants} participants
+        </span>
+        <span class="badge bg-light text-dark">
+          <i class="fas fa-calendar me-1"></i>{initiative.frequency}
+        </span>
+      </div>
+      
+      <p class="card-text text-muted small mb-3">
+        {initiative.description}
+      </p>
+      
+      <div class="mb-3">
+        <div class="row g-2">
+          <div class="col-12">
+            <small class="text-muted d-block">
+              <i class="fas fa-bullseye me-1"></i><strong>Target:</strong>
+            </small>
+            <small>{initiative.target_beneficiaries}</small>
+          </div>
+          <div class="col-12">
+            <small class="text-muted d-block">
+              <i class="fas fa-user-tie me-1"></i><strong>Coordinator:</strong>
+            </small>
+            <small>{initiative.coordinator}</small>
+          </div>
+        </div>
+      </div>
+      
+      {showDetails && (
+        <div class="mb-3">
+          <h6 class="text-primary mb-2">
+            <i class="fas fa-chart-line me-1"></i>Impact Highlights:
+          </h6>
+          <ul class="list-unstyled small">
+            {Object.entries(initiative.impact).slice(0, 2).map(([key, value]) => (
+              <li class="mb-1">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <strong>{key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}:</strong> {value}
+              </li>
+            ))}
+            {Object.keys(initiative.impact).length > 2 && (
+              <li class="text-muted">
+                <i class="fas fa-plus me-2"></i>More impact data available
+              </li>
+            )}
+          </ul>
+        </div>
+      )}
+      
+      {initiative.partnerships.length > 0 && (
+        <div class="mb-3">
+          <small class="text-muted d-block mb-1">
+            <i class="fas fa-handshake me-1"></i><strong>Partners:</strong>
+          </small>
+          <div class="d-flex flex-wrap gap-1">
+            {initiative.partnerships.slice(0, 2).map(partner => (
+              <span class="badge bg-light text-dark small">{partner}</span>
+            ))}
+            {initiative.partnerships.length > 2 && (
+              <span class="badge bg-light text-muted small">+{initiative.partnerships.length - 2} more</span>
+            )}
+          </div>
+        </div>
+      )}
+      
+      <div class="mt-auto">
+        <div class="d-flex justify-content-between align-items-center">
+          <a href="/contact" class="btn btn-outline-primary btn-sm">
+            <i class="fas fa-hands-helping me-1"></i>Get Involved
+          </a>
+          <a href={`/community/${generateSlug(initiative.name)}`} class="btn btn-primary btn-sm">
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.community-card {
+  transition: transform 0.3s ease;
+}
+
+.community-card:hover {
+  transform: translateY(-5px);
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+}
+
+.card-img-top {
+  border-radius: 15px 15px 0 0;
+}
+
+.badge {
+  font-size: 0.75rem;
+}
+</style>

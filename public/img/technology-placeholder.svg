@@ -1,0 +1,95 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="techGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0891b2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0e7490;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#techGrad)"/>
+  
+  <!-- Computer Monitor -->
+  <g transform="translate(150, 80)">
+    <!-- Screen -->
+    <rect x="0" y="0" width="100" height="70" fill="#1f2937" rx="4"/>
+    <rect x="5" y="5" width="90" height="60" fill="#111827" rx="2"/>
+    
+    <!-- Screen Content -->
+    <rect x="10" y="10" width="80" height="8" fill="#3b82f6" opacity="0.8"/>
+    <rect x="10" y="22" width="60" height="4" fill="#ffffff" opacity="0.6"/>
+    <rect x="10" y="30" width="70" height="4" fill="#ffffff" opacity="0.6"/>
+    <rect x="10" y="38" width="50" height="4" fill="#ffffff" opacity="0.6"/>
+    <rect x="10" y="46" width="75" height="4" fill="#ffffff" opacity="0.6"/>
+    <rect x="10" y="54" width="40" height="4" fill="#ffffff" opacity="0.6"/>
+    
+    <!-- Stand -->
+    <rect x="40" y="70" width="20" height="15" fill="#374151"/>
+    <rect x="30" y="85" width="40" height="5" fill="#374151"/>
+  </g>
+  
+  <!-- Gear 1 -->
+  <g transform="translate(100, 120)">
+    <circle cx="0" cy="0" r="20" fill="#ffffff" opacity="0.9"/>
+    <circle cx="0" cy="0" r="12" fill="#0891b2"/>
+    <!-- Gear Teeth -->
+    <g fill="#ffffff" opacity="0.9">
+      <rect x="-2" y="-22" width="4" height="4"/>
+      <rect x="-2" y="18" width="4" height="4"/>
+      <rect x="18" y="-2" width="4" height="4"/>
+      <rect x="-22" y="-2" width="4" height="4"/>
+      <rect x="13" y="-15" width="4" height="4" transform="rotate(45)"/>
+      <rect x="13" y="11" width="4" height="4" transform="rotate(45)"/>
+      <rect x="-17" y="11" width="4" height="4" transform="rotate(45)"/>
+      <rect x="-17" y="-15" width="4" height="4" transform="rotate(45)"/>
+    </g>
+  </g>
+  
+  <!-- Gear 2 -->
+  <g transform="translate(300, 140)">
+    <circle cx="0" cy="0" r="15" fill="#ffffff" opacity="0.8"/>
+    <circle cx="0" cy="0" r="8" fill="#0891b2"/>
+    <!-- Gear Teeth -->
+    <g fill="#ffffff" opacity="0.8">
+      <rect x="-1.5" y="-17" width="3" height="3"/>
+      <rect x="-1.5" y="14" width="3" height="3"/>
+      <rect x="14" y="-1.5" width="3" height="3"/>
+      <rect x="-17" y="-1.5" width="3" height="3"/>
+      <rect x="10" y="-12" width="3" height="3" transform="rotate(45)"/>
+      <rect x="10" y="9" width="3" height="3" transform="rotate(45)"/>
+      <rect x="-13" y="9" width="3" height="3" transform="rotate(45)"/>
+      <rect x="-13" y="-12" width="3" height="3" transform="rotate(45)"/>
+    </g>
+  </g>
+  
+  <!-- Circuit Board Pattern -->
+  <g stroke="#ffffff" stroke-width="2" fill="none" opacity="0.3">
+    <path d="M 50 200 L 80 200 L 80 220 L 120 220"/>
+    <path d="M 120 220 L 150 220 L 150 240 L 200 240"/>
+    <path d="M 200 240 L 250 240 L 250 220 L 300 220"/>
+    <circle cx="80" cy="200" r="3" fill="#ffffff"/>
+    <circle cx="120" cy="220" r="3" fill="#ffffff"/>
+    <circle cx="200" cy="240" r="3" fill="#ffffff"/>
+    <circle cx="250" cy="220" r="3" fill="#ffffff"/>
+  </g>
+  
+  <!-- Binary Code -->
+  <g fill="#ffffff" opacity="0.2" font-family="monospace" font-size="12">
+    <text x="60" y="60">1010</text>
+    <text x="320" y="80">1101</text>
+    <text x="80" y="260">0110</text>
+    <text x="300" y="250">1001</text>
+  </g>
+  
+  <!-- WiFi Symbol -->
+  <g transform="translate(320, 60)">
+    <path d="M 0 20 Q -10 10 -20 20" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.6"/>
+    <path d="M 0 20 Q -15 0 -30 20" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.4"/>
+    <path d="M 0 20 Q -20 -10 -40 20" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.2"/>
+    <circle cx="0" cy="20" r="2" fill="#ffffff"/>
+  </g>
+  
+  <!-- Subject Text -->
+  <text x="200" y="240" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Technology</text>
+  <text x="200" y="265" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" opacity="0.8">Digital Innovation</text>
+</svg>

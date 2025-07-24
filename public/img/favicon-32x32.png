@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <style>
+      .lantern-body { fill: #B91C1C; stroke: #7F1D1D; stroke-width: 0.8; }
+      .lantern-metal { fill: #7F1D1D; }
+      .flame { fill: #FCD34D; stroke: #F59E0B; stroke-width: 0.3; }
+      .handle { fill: none; stroke: #7F1D1D; stroke-width: 1.2; stroke-linecap: round; }
+    </style>
+  </defs>
+  
+  <!-- Main lantern body -->
+  <ellipse cx="16" cy="19" rx="7" ry="9" class="lantern-body"/>
+  
+  <!-- Top cap -->
+  <rect x="12.5" y="8" width="7" height="2.5" rx="0.8" class="lantern-body"/>
+  
+  <!-- Handle -->
+  <path d="M14.5 7 Q16 5.5 17.5 7" class="handle"/>
+  
+  <!-- Bottom cap -->
+  <rect x="13" y="27" width="6" height="2" rx="0.8" class="lantern-body"/>
+  
+  <!-- Decorative bands -->
+  <rect x="12.5" y="12" width="7" height="0.8" class="lantern-metal"/>
+  <rect x="12.5" y="25" width="7" height="0.8" class="lantern-metal"/>
+  
+  <!-- Flame -->
+  <path d="M16 18.5 Q14.5 16 16 14 Q17.5 16 16 18.5" class="flame"/>
+  <ellipse cx="16" cy="17" rx="1" ry="1.5" fill="#FEF3C7" opacity="0.8"/>
+  
+  <!-- Lantern glow effect -->
+  <ellipse cx="16" cy="19" rx="6" ry="8" fill="none" stroke="#FCD34D" stroke-width="0.3" opacity="0.4"/>
+</svg>

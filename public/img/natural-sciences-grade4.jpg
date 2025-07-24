@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="scienceBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#66bb6a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4caf50;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#scienceBg)"/>
+  
+  <!-- Microscope -->
+  <rect x="180" y="120" width="40" height="100" fill="#333"/>
+  <circle cx="200" cy="110" r="15" fill="#666"/>
+  <rect x="190" y="95" width="20" height="20" fill="#333"/>
+  <rect x="170" y="220" width="60" height="10" fill="#333"/>
+  
+  <!-- Test tubes -->
+  <rect x="120" y="150" width="8" height="50" fill="#e3f2fd" stroke="#333" stroke-width="1"/>
+  <rect x="120" y="180" width="8" height="20" fill="#2196f3"/>
+  
+  <rect x="135" y="140" width="8" height="60" fill="#e3f2fd" stroke="#333" stroke-width="1"/>
+  <rect x="135" y="170" width="8" height="30" fill="#f44336"/>
+  
+  <rect x="280" y="160" width="8" height="40" fill="#e3f2fd" stroke="#333" stroke-width="1"/>
+  <rect x="280" y="180" width="8" height="20" fill="#4caf50"/>
+  
+  <!-- Beaker -->
+  <path d="M250 140 L250 180 L270 200 L230 200 Z" fill="#e3f2fd" stroke="#333" stroke-width="2"/>
+  <rect x="245" y="185" width="10" height="15" fill="#ff9800"/>
+  
+  <!-- Plant -->
+  <rect x="320" y="180" width="4" height="40" fill="#8bc34a"/>
+  <ellipse cx="315" cy="175" rx="8" ry="12" fill="#4caf50"/>
+  <ellipse cx="325" cy="170" rx="6" ry="10" fill="#4caf50"/>
+  <ellipse cx="330" cy="180" rx="7" ry="11" fill="#4caf50"/>
+  
+  <!-- Atoms/molecules -->
+  <circle cx="80" cy="80" r="8" fill="#ff5722"/>
+  <circle cx="95" cy="75" r="6" fill="#2196f3"/>
+  <circle cx="85" cy="95" r="5" fill="#ffeb3b"/>
+  <line x1="80" y1="80" x2="95" y2="75" stroke="#333" stroke-width="2"/>
+  <line x1="80" y1="80" x2="85" y2="95" stroke="#333" stroke-width="2"/>
+  
+  <!-- DNA helix -->
+  <path d="M350 60 Q360 80 350 100 Q340 120 350 140" stroke="#9c27b0" stroke-width="3" fill="none"/>
+  <path d="M360 60 Q350 80 360 100 Q370 120 360 140" stroke="#9c27b0" stroke-width="3" fill="none"/>
+  <line x1="350" y1="70" x2="360" y2="70" stroke="#9c27b0" stroke-width="2"/>
+  <line x1="350" y1="90" x2="360" y2="90" stroke="#9c27b0" stroke-width="2"/>
+  <line x1="350" y1="110" x2="360" y2="110" stroke="#9c27b0" stroke-width="2"/>
+  <line x1="350" y1="130" x2="360" y2="130" stroke="#9c27b0" stroke-width="2"/>
+  
+  <!-- Sun -->
+  <circle cx="60" cy="50" r="20" fill="#ffeb3b"/>
+  <line x1="40" y1="30" x2="45" y2="35" stroke="#ffeb3b" stroke-width="3"/>
+  <line x1="75" y1="35" x2="80" y2="30" stroke="#ffeb3b" stroke-width="3"/>
+  <line x1="40" y1="70" x2="45" y2="65" stroke="#ffeb3b" stroke-width="3"/>
+  <line x1="75" y1="65" x2="80" y2="70" stroke="#ffeb3b" stroke-width="3"/>
+  <line x1="30" y1="50" x2="35" y2="50" stroke="#ffeb3b" stroke-width="3"/>
+  <line x1="85" y1="50" x2="90" y2="50" stroke="#ffeb3b" stroke-width="3"/>
+  
+  <!-- Water drops -->
+  <path d="M100 200 Q105 190 110 200 Q105 210 100 200" fill="#2196f3"/>
+  <path d="M120 240 Q125 230 130 240 Q125 250 120 240" fill="#2196f3"/>
+  
+  <!-- Title -->
+  <text x="200" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#fff">Natural Sciences Grade 4</text>
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#fff">Exploring Life & Matter</text>
+</svg>

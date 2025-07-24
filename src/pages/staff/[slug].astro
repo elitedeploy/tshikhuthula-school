@@ -1,0 +1,235 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const staff = await getCollection('staff');
+  return staff.map((member) => ({
+    params: { slug: member.slug },
+    props: { member },
+  }));
+}
+
+const { member } = Astro.props;
+const { Content } = await member.render();
+---
+
+<Layout title={`${member.data.name} - Tshikhuthula School Staff`}>
+  <!-- Header Start -->
+  <div class="container-fluid bg-primary py-5 mb-5 page-header">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <h1 class="display-3 text-white animated slideInDown">{member.data.name}</h1>
+          <p class="lead text-white mb-4">{member.data.position}</p>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center">
+              <li class="breadcrumb-item"><a class="text-white" href="/">Home</a></li>
+              <li class="breadcrumb-item"><a class="text-white" href="/staff">Staff</a></li>
+              <li class="breadcrumb-item text-white active" aria-current="page">{member.data.name}</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header End -->
+
+  <!-- Staff Profile Start -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <!-- Staff Photo and Basic Info -->
+          <div class="bg-light rounded p-4 mb-4 text-center">
+            {member.data.image && (
+              <img class="img-fluid rounded-circle mb-4" 
+                   src={member.data.image} 
+                   alt={member.data.name} 
+                   style="width: 200px; height: 200px; object-fit: cover;" />
+            )}
+            <h4 class="mb-2">{member.data.name}</h4>
+            <p class="text-primary mb-3">{member.data.position}</p>
+            <span class="badge bg-secondary mb-3">{member.data.department}</span>
+            
+            {member.data.is_featured && (
+              <div class="mb-3">
+                <span class="badge bg-warning text-dark">
+                  <i class="fa fa-star me-1"></i>Featured Staff
+                </span>
+              </div>
+            )}
+          </div>
+
+          <!-- Contact Information -->
+          <div class="bg-light rounded p-4 mb-4">
+            <h5 class="mb-4">Contact Information</h5>
+            
+            <div class="d-flex align-items-center mb-3">
+              <i class="fa fa-envelope text-primary me-3"></i>
+              <div>
+                <strong>Email:</strong><br>
+                <a href={`mailto:${member.data.email}`} class="text-decoration-none">
+                  {member.data.email}
+                </a>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center mb-3">
+              <i class="fa fa-phone text-primary me-3"></i>
+              <div>
+                <strong>Phone:</strong><br>
+                <a href={`tel:${member.data.phone}`} class="text-decoration-none">
+                  {member.data.phone}
+                </a>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center">
+              <i class="fa fa-building text-primary me-3"></i>
+              <div>
+                <strong>Department:</strong><br>
+                <span>{member.data.department}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Qualifications -->
+          {member.data.qualifications && member.data.qualifications.length > 0 && (
+            <div class="bg-light rounded p-4">
+              <h5 class="mb-4">Qualifications</h5>
+              <ul class="list-unstyled">
+                {member.data.qualifications.map((qualification) => (
+                  <li class="mb-2">
+                    <i class="fa fa-graduation-cap text-primary me-2"></i>
+                    {qualification}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <div class="col-lg-8">
+          <!-- About Section -->
+          <div class="mb-5">
+            <h3 class="mb-4">About {member.data.name}</h3>
+            <p class="lead mb-4">{member.data.bio}</p>
+          </div>
+
+          <!-- Detailed Content -->
+          <div class="staff-content">
+            <Content />
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="row g-4 mt-4">
+            <div class="col-md-4">
+              <div class="bg-light rounded p-4 text-center">
+                <i class="fa fa-user-tie fa-2x text-primary mb-3"></i>
+                <h6>Position</h6>
+                <p class="mb-0">{member.data.position}</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="bg-light rounded p-4 text-center">
+                <i class="fa fa-building fa-2x text-primary mb-3"></i>
+                <h6>Department</h6>
+                <p class="mb-0">{member.data.department}</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="bg-light rounded p-4 text-center">
+                <i class="fa fa-graduation-cap fa-2x text-primary mb-3"></i>
+                <h6>Qualifications</h6>
+                <p class="mb-0">{member.data.qualifications?.length || 0} Credentials</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Staff Profile End -->
+
+  <!-- Contact CTA -->
+  <div class="container-xxl py-5">
+    <div class="container">
+      <div class="bg-light rounded p-5">
+        <div class="row g-4 justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h4 class="mb-4">Get in Touch with {member.data.name}</h4>
+            <p class="mb-4">
+              Have questions or would like to schedule a meeting? 
+              {member.data.name} is available to discuss your child's education and development.
+            </p>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <a class="btn btn-primary py-3 px-5" href={`mailto:${member.data.email}`}>
+                  <i class="fa fa-envelope me-2"></i>Send Email
+                </a>
+              </div>
+              <div class="col-sm-6">
+                <a class="btn btn-outline-primary py-3 px-5" href="/contact">
+                  <i class="fa fa-phone me-2"></i>Contact School
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Contact CTA End -->
+
+  <!-- Back to Staff -->
+  <div class="container-xxl py-3">
+    <div class="container">
+      <div class="text-center">
+        <a href="/staff" class="btn btn-outline-primary">
+          <i class="fa fa-arrow-left me-2"></i>Back to All Staff
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .staff-content {
+    line-height: 1.8;
+  }
+  
+  .staff-content h2 {
+    color: #2c3e50;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .staff-content h3 {
+    color: #34495e;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .staff-content ul {
+    margin-bottom: 1.5rem;
+  }
+  
+  .staff-content li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .staff-content p {
+    margin-bottom: 1.25rem;
+  }
+  
+  .staff-content blockquote {
+    border-left: 4px solid #007bff;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.25rem;
+  }
+</style>
